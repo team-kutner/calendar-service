@@ -1,7 +1,6 @@
 const mysql = require('mysql2');
 const faker = require('faker');
 const moment = require('moment');
-const seed = require('./seed.js');
 
 const dbName = process.env.DB_SCHEMAS || 'booking';
 
@@ -11,7 +10,6 @@ let db = mysql.createConnection({
   password: 'student',
   database: 'booking'
 });
-
 
 db.connect(function(err) {
   if (err) { return console.error('error: ' + err.message); }

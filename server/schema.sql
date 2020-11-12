@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS listings (
 CREATE TABLE IF NOT EXISTS reservations (
 	resID INT AUTO_INCREMENT,
 	listingID INT,
-	email VARCHAR(50),
 	checkIn DATE NOT NULL,
 	checkOut DATE NOT NULL,
 	adults INT,
@@ -28,11 +27,11 @@ CREATE TABLE IF NOT EXISTS reservations (
 	FOREIGN KEY (listingID) REFERENCES listings (listingID)
 );
 
-CREATE TABLE IF NOT EXISTS dates (
-	dateID INT AUTO_INCREMENT,
-	listingID INT,
-	date DATE,
-	available BOOLEAN,
-	PRIMARY KEY (dateID),
-	FOREIGN KEY (listingID) REFERENCES listings (listingID)
-);
+-- CREATE TABLE IF NOT EXISTS dates (
+-- 	dateID INT AUTO_INCREMENT,
+-- 	listingID INT,
+-- 	date DATE,
+-- 	available BOOLEAN,
+-- 	PRIMARY KEY (dateID),
+-- 	FOREIGN KEY (listingID) REFERENCES listings (listingID)
+-- );

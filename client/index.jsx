@@ -19,6 +19,7 @@ class App extends React.Component {
 
   render() {
 
+
     const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -57,9 +58,9 @@ class App extends React.Component {
     return (
       <Container>
         <Price>${this.state.price} / night</Price>
-        <Rating> {this.state.rating} ({this.state.reviews})</Rating>
+        <Rating><span class="red-star">{`\u2605`}</span>{this.state.rating} ({this.state.reviews})</Rating>
         <Calendar/>
-        <Button>Check availability</Button>
+        <Button className='mouse-cursor'>Check availability</Button>
       </Container>
     );
   }

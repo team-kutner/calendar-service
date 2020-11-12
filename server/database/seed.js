@@ -1,6 +1,7 @@
 const faker = require('faker');
 const db = require('./config.js');
 const moment = require('moment');
+const momentRandom = require('moment-random');
 
 (() => {
   var executed = false;
@@ -26,22 +27,29 @@ const moment = require('moment');
         }
       });
     }
-    var start = moment().format('YYYY-MM-DD');
-    const desiredDays = 356;
-    for (let i = 0; i < desiredDays; i++) {
-      let date = moment(start, 'YYYY-MM-DD').add(i, 'days').format('YYYY-MM-DD');
-      let newDate = [
-        date,
-        faker.random.boolean()
+    const desiredRes = 1000;
+
+    for (let i = 0; i < desiredRes; i++) {
+      var checkin = momentRandom('12/25/2021', '11/25/2020').format('YYYY-MM-DD');
+      let randomNum = faker.random.number({min: 1, max: 14});
+      let checkout = moment(checkin, 'YYYY-MM-DD').add(randomNum, 'days').format('YYYY-MM-DD');
+
+      let newRes = [
+        faker.random.number({min: 1, max: 100}),
+        checkin,
+        checkout,
+        faker.random.number({min: 1, max: 15}),
+        faker.random.number({min: 0, max: 5}),
+        faker.random.number({min: 0, max: 3}),
+        faker.finance.amount(75, 2800, 2)
       ];
-      let query = 'INSERT INTO dates (date, available) VALUES (?, ?)';
-      db.db.query(query, newDate, (err, result) => {
+      let query = 'INSERT INTO reservations (listingID, checkIn, checkOut, adults, children, infants, totalPrice) VALUES (?, ?, ?, ?, ?, ?, ?)';
+      db.db.query(query, newRes, (err, result) => {
         if (err) { console.log(err); } else {
-          console.log('Date added');
+          console.log('Reservation added');
         }
       });
     }
   }
 })();
 
-// module.exports.seed = seed;
