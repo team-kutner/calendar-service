@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "nodemon ./server/app.js",
-    "build": "webpack -d --watch"
+    "build": "webpack -d --watch",
+    "seed": "node ./server/database/seed.js"
+
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",

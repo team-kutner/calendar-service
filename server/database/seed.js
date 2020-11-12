@@ -2,7 +2,7 @@ const faker = require('faker');
 const db = require('./config.js');
 const moment = require('moment');
 
-let seed = () => {
+(() => {
   var executed = false;
 
   if (!executed) {
@@ -42,6 +42,6 @@ let seed = () => {
       });
     }
   }
-};
+})();
 
-module.exports.seed = seed;
+// module.exports.seed = seed;

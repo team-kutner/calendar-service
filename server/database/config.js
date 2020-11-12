@@ -12,18 +12,11 @@ let db = mysql.createConnection({
   database: 'booking'
 });
 
-let connect = () => {
-  return new Promise((resolve, reject) => {
-    db.connect(function(err) {
-      if (err) { return console.error('error: ' + err.message); }
-      resolve(console.log('Connected to MySQL server'));
-    });
-  });
-};
 
-connect()
-  .then(() => { seed.seed(); console.log('here'); })
-  .catch(err => console.log(err));
+db.connect(function(err) {
+  if (err) { return console.error('error: ' + err.message); }
+  console.log('Connected to MySQL server');
+});
 
 module.exports.db = db;
 
