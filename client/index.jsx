@@ -22,17 +22,17 @@ class App extends React.Component {
     const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 4fr 2fr;
     grid-template-areas:  "price rating"
-                          "checkin checkout"
-                          "guest guest"
+                          "calendar calendar"
                           "button button";
+    grid-row-gap: 20px;
     height: 372px;
     width: 418px;
     border-radius: 15px;
     border: 1px solid #D3D3D3;
     box-shadow: 0 0 20px #DCDCDC;
-    padding: 50px;
+    padding: 35px;
   `;
 
     const Price = styled.div`
@@ -40,28 +40,25 @@ class App extends React.Component {
     `;
 
     const Rating = styled.div`
-    grid-area:rating
-    `;
-
-    const Guest = styled.div`
-    grid-area: guest;
+    grid-area: rating;
+    text-align: right;
     `;
 
     const Button = styled.button`
     grid-area: button;
-    background: palevioletred;
+    background: #dc1f60;
     border-radius: 15px;
-    border: 2px solid palevioletred;
+    border: 2px solid #dc1f60;
     color: white;
-    margin: 0.5em 1em;
-    padding: 0.25em 1em`;
+    font-size: 25px;
+    padding: 20px;
+    `;
 
     return (
       <Container>
         <Price>${this.state.price} / night</Price>
         <Rating> {this.state.rating} ({this.state.reviews})</Rating>
         <Calendar/>
-        <Guest>Guest goes here</Guest>
         <Button>Check availability</Button>
       </Container>
     );
