@@ -1,4 +1,6 @@
 const mysql = require('mysql2');
+const faker = require('faker');
+const moment = require('moment');
 
 const dbName = process.env.DB_SCHEMAS || 'booking';
 
@@ -14,8 +16,7 @@ db.connect(function(err) {
   console.log('Connected to MySQL server');
 });
 
-
-module.exports = db;
+module.exports.db = db;
 
 // db.query(`CREATE DATABASE IF NOT EXISTS ${dbName};`);
 

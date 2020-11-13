@@ -7,12 +7,13 @@ const router = require('./routes.js');
 
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(router);
 
 app.get('/', (req, res) => {
+  res.sendStatus(200);
   res.send('Hello World!');
+  res.end();
 });
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+module.exports = app;

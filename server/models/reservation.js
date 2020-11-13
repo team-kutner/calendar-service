@@ -1,19 +1,18 @@
 const models = require('../models');
+const db = require('../database/config.js');
 
 module.exports = {
-  getBookingInfo: function(callback) {
-    // grabs booking info for a home
-    // returns an array
-    // {
-    //   "price_per_night": 171.00,
-    //   "cleaning_fee": 57.00,
-    //   "service_fee": 32.00,
-    //   "total_price": 260.00,
-    // }
-
+  getBookingInfo: function(id, callback) {
+    // need to grab all the prices, rating, and numratings
+    let query = 'SELECT pricePerNight, cleaningFee, serviceFee, rating, numRatings FROM listings WHERE listingID = ?';
+    db.db.query(query, id, (err, result) => {
+      if (err) { console.log(err); } else {
+        callback(result);
+      }
+    });
   },
 
-  addBookingInfo: function(callback) {
+  addBookingInfo: function(params, callback) {
     // posts booking info into the DB reservations table
     // {
     //   "booking_info": {
@@ -31,6 +30,13 @@ module.exports = {
     //     "total_price": 260.00,
     //   }
     // }
+    let query = 'INSERT INTO reservations (listingID, checkIn, checkOut, adults, children, infants, totalPrice) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    db.db.query(query, params, (err, result) => {
+      if (err) { console.log(err); } else {
+        callback('Successfully added to reservation');
+      }
+    });
+
 
   }
 };
