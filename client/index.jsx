@@ -16,6 +16,9 @@ class App extends React.Component {
 
   componentDidMount() {
     // here grab info from the listing (which listing?) and update the price per night as well as the reviews
+    // see what URL browser is currently at and grab ID from there
+    let url = window.location.href;
+    console.log('url: ', url);
     axios.get('/api/homes/:id/reservation')
       .then((res) => {
         let data = res.data[0];

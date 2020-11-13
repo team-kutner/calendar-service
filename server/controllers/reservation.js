@@ -6,7 +6,6 @@ module.exports = {
     let id = req.params.id;
     console.log('id: ', id);
     models.reservation.getBookingInfo(id, (results) => {
-      // res.redirect('/');
       res.json(results);
       res.end();
     });
@@ -14,11 +13,12 @@ module.exports = {
 
   // receives post request from client after confirming a booking and uses model function to post new data into the reservations table
   post: function (req, res) {
-
-    var params = [];
+    let key = req.body;
+    var params = [key.listingID, key.checkIn, key.checkOut, key.adults, key.children, key.infants, key.totalPrice];
 
     models.reservation.addBookingInfo(params, (status) => {
-      res.sendStatus(status);
+      console.log(status);
+      res.sendStatus(200);
       res.end();
     });
 

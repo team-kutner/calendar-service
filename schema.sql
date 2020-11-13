@@ -26,12 +26,3 @@ CREATE TABLE IF NOT EXISTS reservations (
 	PRIMARY KEY (resID),
 	FOREIGN KEY (listingID) REFERENCES listings (listingID)
 );
-
--- CREATE TABLE IF NOT EXISTS dates (
--- 	dateID INT AUTO_INCREMENT,
--- 	listingID INT,
--- 	date DATE,
--- 	available BOOLEAN,
--- 	PRIMARY KEY (dateID),
--- 	FOREIGN KEY (listingID) REFERENCES listings (listingID)
--- );
