@@ -1,17 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import Guest from './guest.jsx';
 
-class Calendar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+function Calendar() {
 
-    };
-  }
-
-  render() {
-
-    const CalendarContainer = styled.div`
+  const CalendarContainer = styled.div`
     display: grid;
     grid-area: calendar;
     grid-template-columns: 1fr 1fr;
@@ -34,22 +27,14 @@ class Calendar extends React.Component {
     padding: 10px;
     `;
 
-    const Guest = styled.div`
-    grid-area: guest;
-    border: 1px solid black;
-    border-radius: 0 0 15px 15px;
-    padding: 10px;
-    `;
 
     return (
       <CalendarContainer>
         <Checkin>Checkin</Checkin>
         <Checkout>Checkout</Checkout>
-        <Guest>Guest goes here</Guest>
+        <Guest />
       </CalendarContainer>
     );
-  }
-
 }
 
 export default Calendar;
