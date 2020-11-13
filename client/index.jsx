@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled, { css } from 'styled-components';
 import Calendar from './components/calendar.jsx';
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,10 +16,17 @@ class App extends React.Component {
 
   componentDidMount() {
     // here grab info from the listing (which listing?) and update the price per night as well as the reviews
+    axios.get('/api/homes/:id/reservation')
+      .then((res) => {
+        let data = res.data[0];
+        this.setState({price: data.pricePerNight});
+        this.setState({rating: data.rating});
+        this.setState({reviews: data.numRatings});
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
-
 
     const Container = styled.div`
     display: grid;
@@ -58,7 +66,7 @@ class App extends React.Component {
     return (
       <Container>
         <Price>${this.state.price} / night</Price>
-        <Rating><span class="red-star">{`\u2605`}</span>{this.state.rating} ({this.state.reviews})</Rating>
+        <Rating><span class="red-star">{`\u2605`}</span> {this.state.rating} ({this.state.reviews})</Rating>
         <Calendar/>
         <Button className='mouse-cursor'>Check availability</Button>
       </Container>
