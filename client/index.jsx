@@ -32,19 +32,23 @@ function App() {
   grid-row-gap: 20px;
   height: 372px;
   width: 418px;
+  position: relative;
   border-radius: 15px;
   border: 1px solid #D3D3D3;
   box-shadow: 0 0 20px #DCDCDC;
   padding: 35px;
-`;
+  `;
 
   const Price = styled.div`
   grid-area: price;
+  align-self: center;
   `;
 
   const Rating = styled.div`
   grid-area: rating;
   text-align: right;
+  align-self: center;
+  cursor: pointer;
   `;
 
   const Button = styled.button`
@@ -55,13 +59,19 @@ function App() {
   color: white;
   font-size: 25px;
   padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
   `;
 
   return (
     <Container>
-      <Price>$ {price} / night</Price>
-      <Rating><span class="red-star">{`\u2605`}</span> {rating} ({reviews})</Rating>
-      <Calendar/>
+      <Price>
+        <span style={{'font-size': '25px'}}><b>${price}</b></span> <span style={{'font-size': '18px'}}> /</span> night
+      </Price>
+      <Rating>
+        <span class="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
+      </Rating>
+      <Calendar />
       <Button className='mouse-cursor'>Check availability</Button>
     </Container>
   );

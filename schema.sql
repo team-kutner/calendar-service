@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS listings (
 	listingID INT AUTO_INCREMENT,
 	name VARCHAR(100),
 	description VARCHAR(250),
-	pricePerNight DOUBLE,
+	pricePerNight INT,
 	cleaningFee DOUBLE,
 	serviceFee DOUBLE,
 	rating DOUBLE,

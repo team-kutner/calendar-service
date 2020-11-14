@@ -11,7 +11,7 @@ function seed() {
     let newListing = [
       faker.company.catchPhraseDescriptor(),
       faker.lorem.sentence(),
-      faker.finance.amount(30, 750, 2),
+      faker.random.number({min: 30, max: 550}),
       faker.finance.amount(10, 120, 2),
       faker.finance.amount(10, 75, 2),
       faker.finance.amount(0, 5, 2),
