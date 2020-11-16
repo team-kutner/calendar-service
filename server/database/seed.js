@@ -11,13 +11,14 @@ function seed() {
     let newListing = [
       faker.company.catchPhraseDescriptor(),
       faker.lorem.sentence(),
+      faker.random.number({min: 1, max: 15}),
       faker.random.number({min: 30, max: 550}),
       faker.finance.amount(10, 120, 2),
       faker.finance.amount(10, 75, 2),
-      faker.finance.amount(0, 5, 2),
+      faker.finance.amount(2, 5, 2),
       faker.random.number({min: 1, max: 500})
     ];
-    let query = 'INSERT INTO listings (name, description, pricePerNight, cleaningFee, serviceFee, rating, numRatings) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let query = 'INSERT INTO listings (name, description, guestMax, pricePerNight, cleaningFee, serviceFee, rating, numRatings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     db.db.query(query, newListing, (err, result) => {
       if (err) { console.log(err); } else {
         console.log('Listing added');
