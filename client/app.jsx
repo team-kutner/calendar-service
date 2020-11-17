@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import styled, { css } from 'styled-components';
 import Calendar from './components/calendar.jsx';
 import axios from 'axios';
@@ -20,6 +19,8 @@ border-radius: 15px;
 border: 1px solid #D3D3D3;
 box-shadow: 0 0 20px #DCDCDC;
 padding: 24px;
+margin-left: auto;
+margin-right: 50px;
 `;
 
 const Price = styled.div`
@@ -89,4 +90,3 @@ function App() {
 }
 
 export default App;
-ReactDOM.render(<App />, document.getElementById('app'));

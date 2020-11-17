@@ -44,13 +44,13 @@ function GuestSelect(props) {
     <Wrapper>
 
       { click && (<><Guest onClick={handleClick}><b>GUESTS</b><br></br>
-        <span style={{'color': 'grey', 'font-size': '14px'}}>1 guest
+        <span style={{'color': '#717171', 'font-size': '14px'}}>1 guest
         </span>
       </Guest>
       <Arrow onClick={handleClick}>{`\u02c5`}</Arrow></>) }
 
       { !click && (<><Guest onClick={handleClick}><b>GUESTS</b><br></br>
-        <span style={{'color': 'grey', 'font-size': '14px'}}>1 guest
+        <span style={{'color': '#717171', 'font-size': '14px'}}>1 guest
         </span>
       </Guest>
       <Arrow onClick={handleClick}>{`\u02c4`}</Arrow>

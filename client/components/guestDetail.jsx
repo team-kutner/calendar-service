@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const GuestExpand = styled.div`
 height: 320px;
-width: 85.6%;
+width: 90%;
 display: grid;
 border-radius: 15px;
 grid-template-columns: 1fr 1fr;
