@@ -54,6 +54,11 @@ const DayNum = styled(Day)`
     }
 `;
 
+const DayBook = styled(Day)`
+text-decoration: line-through;
+color: #B0B0B0;
+`;
+
 function Calendar(props) {
   let today = moment();
   let nextM = moment().add(1, 'months');
@@ -63,11 +68,6 @@ function Calendar(props) {
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYSWEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-  // get first day of the current month, then have to start the calendar from that specific day
-
-  //keep track of state of month at this level and render it in the body
-
 
   const handlePrevClick = () => {
     setCurrMonth(month.clone().subtract(1, 'months'));
@@ -79,9 +79,17 @@ function Calendar(props) {
     setNextMonth(next.clone().add(1, 'months'));
   }
 
+  const handleDateSelect = (e) => {
+    props.setClick(props.click + 1);
+    // first click is checkin
+    // second click is checkout and re-renders the page
+  }
+
   useEffect(() => {
     formatMonth = month.format('YYYYMMDD');
     formatNextMonth = next.format('YYYYMMDD');
+    let frame = document.getElementById('frame');
+    frame.addEventListener('click', handleDateSelect);
   }, [month]);
 
   let formatMonth = month.format('YYYYMMDD');
@@ -99,7 +107,7 @@ function Calendar(props) {
   let start2 = next.startOf('month').day();
 
   return (
-    <Frame>
+    <Frame id='frame'>
 
       <Header>
         <Button onClick={handlePrevClick}
@@ -123,11 +131,16 @@ function Calendar(props) {
             .fill(null)
             .map((_, index) => {
               let d = index - (start - 1);
+              let hidden = moment().set({'year': year, 'month': currMonth-1, 'date': d}).format('YYYY-MM-DD');
+              if (props.booked.includes(hidden)) {
                 return (
-                  <DayNum
-                  key={index}
-                  isSelected={d === day}>{d > 0 ? d : ''}</DayNum>
+                  <DayBook key={index}>{d > 0 ? d : ''}</DayBook>
                 )
+              } else {
+                return (
+                  <DayNum key={index}>{d > 0 ? d : ''}<span style={{'display': 'none'}}>{hidden}</span></DayNum>
+                )
+              }
             })
           }
 
@@ -139,15 +152,17 @@ function Calendar(props) {
             .fill(null)
             .map((_, index) => {
               let d = index - (start2 - 1);
+              let hidden = moment().set({'year': nextYear, 'month': nextMonth-1, 'date': d}).format('YYYY-MM-DD');
+              if (props.booked.includes(hidden)) {
                 return (
-                  <DayNum
-                  key={index}
-                  isSelected={d === day}
-                  //add in an event listener somewhere
-                  // onClick={() => setDate(new Date(year, month, d))}
-                  >
-                    {d > 0 ? d : ''}</DayNum>
+                  <DayBook key={index}>{d > 0 ? d : ''}</DayBook>
                 )
+              } else {
+                return (
+                  <DayNum key={index}>
+                    {d > 0 ? d : ''}<span style={{'display': 'none'}}>{hidden}</span></DayNum>
+                )
+              }
             })
           }
         </span>

@@ -52,8 +52,8 @@ function SelectDates(props) {
         <div style={{'color': '#717171', 'font-size': '14px'}}>Add date</div>
       </Checkout></>) }
 
-      { show && (<Popup close={handleClose} handlePrevClick={props.handlePrevClick} handleNextClick={props.handleNextClick} setCurrMonth={props.setCurrMonth} setNextMonth={props.setNextMonth} month={props.month} nextMonth={props.nextMonth} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>)}
-      <GuestSelect guests={props.guests}/>
+      { show && (<Popup close={handleClose} click={props.click} setClick={props.setClick} checkIn={props.checkIn} checkOut={props.checkOut} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>)}
+      <GuestSelect guests={props.guests} checkIn={props.checkIn} checkOut={props.checkOut}/>
     </CalendarContainer>
   );
 }

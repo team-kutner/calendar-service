@@ -49,8 +49,6 @@ cursor: pointer;
 `;
 
 function App() {
-  let today = moment();
-  let next = moment().add(1, 'months');
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState(0);
@@ -58,12 +56,10 @@ function App() {
   // const [adult, setAdult] = useState(1);
   // const [child, setChild] = useState(0);
   // const [infant, setInfant] = useState(0);
-  const [checkIn, setCheckIn] = useState('YYYYMMDD');
-  const [checkOut, setCheckOut] = useState('YYYYMMDD');
-  const [date, setDate] = useState(moment());
-  const [month, setCurrMonth] = useState(today);
-  const [nextMonth, setNextMonth] = useState(next);
+  const [checkIn, setCheckIn] = useState('MM/DD/YYYY');
+  const [checkOut, setCheckOut] = useState('MM/DD/YYYY');
   const [booked, setBooked] = useState([]);
+  const [click, setClick] = useState(0);
 
   useEffect(() => {
     let url = window.location.href;
@@ -85,26 +81,6 @@ function App() {
     .catch(err => console.log(err));
   }, []);
 
-  // potentially use this to reset everything when the month or date changes
-  //  useEffect(() => {
-  //   // setCurrMonth(date.month());
-  //   // setNextMonth(date.add(1, 'months'));
-  // }, [month]);
-
-  const handlePrevClick = () => {
-    setCurrMonth(month.subtract(1, 'months'));
-    setNextMonth(nextMonth.subtract(1, 'months'));
-    console.log('month: ', month);
-    console.log('next: ', nextMonth);
-  }
-
-  const handleNextClick = () => {
-    setCurrMonth(month.add(1, 'months'));
-    setNextMonth(nextMonth.add(1, 'months'));
-    console.log('month: ', month);
-    console.log('next: ', nextMonth);
-  }
-
   return (
     <Container>
       <Price>
@@ -113,7 +89,7 @@ function App() {
       <Rating>
         <span class="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
       </Rating>
-      <SelectDates handlePrevClick={handlePrevClick} handleNextClick={handleNextClick} guests={guests} setCurrMonth={setCurrMonth} setNextMonth={setNextMonth} month={month} nextMonth={nextMonth} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked}/>
+      <SelectDates click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked}/>
       <Button className='mouse-cursor'>Check availability</Button>
     </Container>
   );
