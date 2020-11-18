@@ -7,8 +7,9 @@ const dbName = process.env.DB_SCHEMAS || 'booking';
 let db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'student',
+  password: '',
   database: 'booking'
+
 });
 
 db.connect(function(err) {

@@ -48,26 +48,9 @@ font-family: 'Montserrat', sans-serif;
 cursor: pointer;
 `;
 
-// const addMonth = (date, months) => {
-//   return new Date(date.setMonth(date.getMonth() + months));
-// }
-
 function App() {
-  // const today = new Date();
-  // const [price, setPrice] = useState(0);
-  // const [rating, setRating] = useState(0);
-  // const [reviews, setReviews] = useState(0);
-  // const [guests, setGuests] = useState(0);
-  // // const [adult, setAdult] = useState(1);
-  // // const [child, setChild] = useState(0);
-  // // const [infant, setInfant] = useState(0);
-  // const [checkIn, setCheckIn] = useState('YYYYMMDD');
-  // const [checkOut, setCheckOut] = useState('YYYYMMDD');
-  // const [date, setDate] = useState(today);
-  // const [month, setCurrMonth] = useState(today);
-  // const [nextMonth, setNextMonth] = useState(addMonth(date, 1));
-  // const [booked, setBooked] = useState([]);
-
+  let today = moment();
+  let next = moment().add(1, 'months');
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState(0);
@@ -78,8 +61,8 @@ function App() {
   const [checkIn, setCheckIn] = useState('YYYYMMDD');
   const [checkOut, setCheckOut] = useState('YYYYMMDD');
   const [date, setDate] = useState(moment());
-  const [month, setCurrMonth] = useState(moment());
-  const [nextMonth, setNextMonth] = useState(moment().add(1, 'months'));
+  const [month, setCurrMonth] = useState(today);
+  const [nextMonth, setNextMonth] = useState(next);
   const [booked, setBooked] = useState([]);
 
   useEffect(() => {
@@ -102,17 +85,24 @@ function App() {
     .catch(err => console.log(err));
   }, []);
 
+  // potentially use this to reset everything when the month or date changes
+  //  useEffect(() => {
+  //   // setCurrMonth(date.month());
+  //   // setNextMonth(date.add(1, 'months'));
+  // }, [month]);
 
   const handlePrevClick = () => {
     setCurrMonth(month.subtract(1, 'months'));
     setNextMonth(nextMonth.subtract(1, 'months'));
-    console.log('prev');
+    console.log('month: ', month);
+    console.log('next: ', nextMonth);
   }
 
   const handleNextClick = () => {
     setCurrMonth(month.add(1, 'months'));
     setNextMonth(nextMonth.add(1, 'months'));
-    console.log('next');
+    console.log('month: ', month);
+    console.log('next: ', nextMonth);
   }
 
   return (

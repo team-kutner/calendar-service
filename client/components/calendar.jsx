@@ -39,7 +39,7 @@ grid-template-areas: "cal1 cal2";
 
 const Day = styled.div`
 width: 14%;
-height: 40px;
+height: 45px;
 display: flex;
 flex-wrap: wrap;
 align-items: center;
@@ -55,59 +55,71 @@ const DayNum = styled(Day)`
 `;
 
 function Calendar(props) {
+  let today = moment();
+  let nextM = moment().add(1, 'months');
+  const [month, setCurrMonth] = useState(today);
+  const [next, setNextMonth] = useState(nextM);
+
   const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   const DAYSWEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   // get first day of the current month, then have to start the calendar from that specific day
 
-  // useEffect(() => {
-  //   setDay(date.date());
-  //   setMonth(date.month());
-  //   setNextMonth(date.add(1, 'months'));
-  //   setYear(date.year());
+  //keep track of state of month at this level and render it in the body
 
-  // }, [date]);
 
-  let formatMonth = props.month.format('YYYYMMDD');
-  let formatNextMonth = props.nextMonth.format('YYYYMMDD');
+  const handlePrevClick = () => {
+    setCurrMonth(month.clone().subtract(1, 'months'));
+    setNextMonth(next.clone().subtract(1, 'months'));
+  }
+
+  const handleNextClick = () => {
+    setCurrMonth(month.clone().add(1, 'months'));
+    setNextMonth(next.clone().add(1, 'months'));
+  }
+
+  useEffect(() => {
+    formatMonth = month.format('YYYYMMDD');
+    formatNextMonth = next.format('YYYYMMDD');
+  }, [month]);
+
+  let formatMonth = month.format('YYYYMMDD');
+  let formatNextMonth = next.format('YYYYMMDD');
 
   let year = parseInt(formatMonth.slice(0, 4));
-  let month = parseInt(formatMonth.slice(4, 6));
+  let currMonth = parseInt(formatMonth.slice(4, 6));
   let day = parseInt(formatMonth.slice(6));
 
   let nextYear = parseInt(formatNextMonth.slice(0, 4));
   let nextMonth = parseInt(formatNextMonth.slice(4, 6));
   let nextDay = parseInt(formatNextMonth.slice(6));
 
-  let start = props.month.startOf('month').day();
-  let start2 = props.nextMonth.startOf('month').day();
-
-  console.log('start: ', month)
-  console.log('start2: ', nextMonth)
+  let start = month.startOf('month').day();
+  let start2 = next.startOf('month').day();
 
   return (
     <Frame>
 
       <Header>
-        <Button onClick={(props.handlePrevClick)}
-        style={{'grid-area': 'month1', 'align-self': 'end', 'justify-self': 'start'}}>{`\u003c`}
+        <Button onClick={handlePrevClick}
+          style={{'grid-area': 'month1', 'align-self': 'end', 'justify-self': 'start'}}>{`\u003c`}
         </Button>
         <div style={{'grid-area': 'month1', 'align-self': 'end', 'justify-self': 'center'}}>
-          {MONTHS[month - 1]} {year}
+          {MONTHS[currMonth - 1]} {year}
         </div>
 
         <div style={{'grid-area': 'month2', 'align-self': 'end', 'justify-self': 'center'}}>
           {MONTHS[nextMonth - 1]} {nextYear}
         </div>
-        <Button onClick={props.handleNextClick} style={{'grid-area': 'month2', 'align-self': 'end', 'justify-self': 'end'}}>{`\u003e`}
+        <Button onClick={handleNextClick} style={{'grid-area': 'month2', 'align-self': 'end', 'justify-self': 'end'}}>{`\u003e`}
         </Button>
       </Header>
 
       <Body>
         <span style={{'grid-area': 'cal1', 'align-self': 'start', 'display': 'flex', 'flex-wrap': 'wrap'}}>
           {DAYSWEEK.map(d => {return (<Day>{d}</Day>)})}
-          {Array(DAYS[month - 1] + (start))
+          {Array(DAYS[currMonth - 1] + (start))
             .fill(null)
             .map((_, index) => {
               let d = index - (start - 1);
