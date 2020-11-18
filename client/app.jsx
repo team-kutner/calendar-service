@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import Calendar from './components/calendar.jsx';
+import SelectDates from './components/selectDates.jsx';
 import axios from 'axios';
+import moment from 'moment';
 
 const Container = styled.div`
 display: grid;
@@ -47,7 +48,26 @@ font-family: 'Montserrat', sans-serif;
 cursor: pointer;
 `;
 
+// const addMonth = (date, months) => {
+//   return new Date(date.setMonth(date.getMonth() + months));
+// }
+
 function App() {
+  // const today = new Date();
+  // const [price, setPrice] = useState(0);
+  // const [rating, setRating] = useState(0);
+  // const [reviews, setReviews] = useState(0);
+  // const [guests, setGuests] = useState(0);
+  // // const [adult, setAdult] = useState(1);
+  // // const [child, setChild] = useState(0);
+  // // const [infant, setInfant] = useState(0);
+  // const [checkIn, setCheckIn] = useState('YYYYMMDD');
+  // const [checkOut, setCheckOut] = useState('YYYYMMDD');
+  // const [date, setDate] = useState(today);
+  // const [month, setCurrMonth] = useState(today);
+  // const [nextMonth, setNextMonth] = useState(addMonth(date, 1));
+  // const [booked, setBooked] = useState([]);
+
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState(0);
@@ -57,23 +77,43 @@ function App() {
   // const [infant, setInfant] = useState(0);
   const [checkIn, setCheckIn] = useState('YYYYMMDD');
   const [checkOut, setCheckOut] = useState('YYYYMMDD');
-
+  const [date, setDate] = useState(moment());
+  const [month, setCurrMonth] = useState(moment());
+  const [nextMonth, setNextMonth] = useState(moment().add(1, 'months'));
+  const [booked, setBooked] = useState([]);
 
   useEffect(() => {
     let url = window.location.href;
 
     axios.get('/api/homes/75/reservation')
-      .then((res) => {
-        let data = res.data[0];
-        setPrice(data.pricePerNight);
-        setRating(data.rating);
-        setReviews(data.numRatings);
-        setGuests(data.guestMax);
-        console.log('guests: ', data.guestMax)
-      })
-      .catch(err => console.log(err));
+    .then((res) => {
+      let data = res.data[0];
+      setPrice(data.pricePerNight);
+      setRating(data.rating);
+      setReviews(data.numRatings);
+      setGuests(data.guestMax);
+    })
+    .catch(err => console.log(err));
+
+    axios.get('/api/homes/75/listing')
+    .then((res) => {
+      setBooked(res.data)
+    })
+    .catch(err => console.log(err));
   }, []);
 
+
+  const handlePrevClick = () => {
+    setCurrMonth(month.subtract(1, 'months'));
+    setNextMonth(nextMonth.subtract(1, 'months'));
+    console.log('prev');
+  }
+
+  const handleNextClick = () => {
+    setCurrMonth(month.add(1, 'months'));
+    setNextMonth(nextMonth.add(1, 'months'));
+    console.log('next');
+  }
 
   return (
     <Container>
@@ -83,7 +123,7 @@ function App() {
       <Rating>
         <span class="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
       </Rating>
-      <Calendar guests={guests}/>
+      <SelectDates handlePrevClick={handlePrevClick} handleNextClick={handleNextClick} guests={guests} setCurrMonth={setCurrMonth} setNextMonth={setNextMonth} month={month} nextMonth={nextMonth} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked}/>
       <Button className='mouse-cursor'>Check availability</Button>
     </Container>
   );

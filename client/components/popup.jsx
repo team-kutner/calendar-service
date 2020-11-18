@@ -1,16 +1,14 @@
 import React, { useState, useEffect, Component } from 'react';
 import styled, { css } from 'styled-components';
-import moment from 'moment'
+import Calendar from './calendar.jsx';
 
 const Modal = styled.div`
 position: absolute;
-/* max-width: 661px; */
 width: 661px;
-/* max-height: 464px; */
 height: 464px;
 display: grid;
 grid-template-columns: repeat(1fr, 4);
-grid-template-rows: 20%, 71%, 9%;
+grid-template-rows: 2fr, 7fr, 1fr;
 grid-template-areas:  "select select check check"
                       "calendar calendar calendar calendar"
                       "blank blank close close";
@@ -24,15 +22,12 @@ column-gap: 0px;
 `;
 
 const CheckinInput = styled.span`
-/* grid-area: check; */
 display: grid;
 grid-template-rows: 50% 50%;
 grid-template-areas: "label"
                     "input";
 border: 1px solid	#717171;
 border-radius: 15px;
-/* align-self: start;
-justify-self: end; */
 font-size: 14px;
 width: 135px;
 height: 54px;
@@ -40,7 +35,6 @@ padding-left: 5px;
 `;
 
 const CheckoutInput = styled.span`
-/* grid-area: check; */
 display: grid;
 grid-template-rows: 50% 50%;
 grid-template-areas: "label2"
@@ -48,8 +42,6 @@ grid-template-areas: "label2"
 border: 1px solid #717171;
 border-radius: 15px;
 font-size: 12px;
-/* align-self: start;
-justify-self: start; */
 background: rgb(0,0,0,0.4);
 width: 135px;
 height: 54px;
@@ -66,19 +58,30 @@ font-size: 14px;
 `;
 
 const Close = styled.button`
-grid-area: close;
 cursor: pointer;
 padding: 0;
 border-radius: 15px;
 background: #222;
 height: 34px;
 width: 69px;
-justify-self: end;
-align-self: end;
 font-size: 14px;
 color: white;
 &:hover {
   background: black;
+}
+`;
+
+const Clear = styled.button`
+cursor: pointer;
+font-size: 14px;
+height: 34px;
+width: 91px;
+border: none;
+background: white;
+text-decoration: underline;
+&:hover {
+  background: #D3D3D3;
+  border-radius: 15px;
 }
 `;
 
@@ -101,16 +104,14 @@ function Popup(props) {
         <CheckoutInput><b style={{'grid-area': 'label2', 'align-self': 'end'}}>CHECK-OUT</b>
           <div style={{'color': '#717171', 'font-size': '14px', 'grid-area': 'input2', 'align-self': 'start'}}>Add date</div>
         </CheckoutInput>
-
       </div>
 
+      <Calendar handlePrevClick={props.handlePrevClick} handleNextClick={props.handleNextClick} setCurrMonth={props.setCurrMonth} setNextMonth={props.setNextMonth} month={props.month} nextMonth={props.nextMonth} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>
 
-
-
-
-
-
-      <Close onClick={props.close}>Close</Close>
+      <div style={{'display': 'flex', 'grid-area': 'close', 'justify-content': 'flex-end', 'align-items': 'flex-end'}}>
+        <Clear> Clear dates </Clear>
+        <Close onClick={props.close}>Close</Close>
+      </div>
     </Modal>
 
   )
