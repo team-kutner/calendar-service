@@ -54,7 +54,7 @@ function GuestSelect(props) {
         </span>
       </Guest>
       <Arrow onClick={handleClick}>{`\u02c4`}</Arrow>
-      <GuestDetail guests={props.guests} click={handleClick}/></>) }
+      <GuestDetail guests={props.guests} click={handleClick} adult={props.adult} setAdult={props.setAdult} child={props.child} setChild={props.setChild} infant={props.infant} setInfant={props.setInfant}/></>) }
 
     </Wrapper>
   )

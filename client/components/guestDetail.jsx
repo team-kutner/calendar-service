@@ -77,16 +77,15 @@ align-self: center;
 justify-self: stretch;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: auto;
-grid-template-areas:  "minus num plus"
+grid-template-areas:  "minus num plus";
 `;
 
 function GuestDetail(props) {
 
-const [adult, setAdult] = useState(1);
-const [child, setChild] = useState(0);
-const [infant, setInfant] = useState(0);
-const [minus, setMinus] = useState(false);
-const [plus, setPlus] = useState(true);
+// const [adult, setAdult] = useState(1);
+// const [child, setChild] = useState(0);
+// const [infant, setInfant] = useState(0);
+
 
   return (
 
@@ -94,10 +93,14 @@ const [plus, setPlus] = useState(true);
       <GuestType style={{'grid-area': 'adult'}}>Adults</GuestType>
       <ButtonContainer style={{'grid-area': 'adultbutton'}}>
         <Button
-        onClick={() => {if(adult > 1) {setAdult(adult - 1)}}}>-</Button>
-        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{adult} </span>
+        onClick={() => {if(props.adult > 1) {props.setAdult(props.adult - 1)}}}>-</Button>
+        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{props.adult} </span>
         <Button
-        onClick={() => {if(adult < props.guests && (adult + child < props.guests)) {setAdult(adult + 1)}}}>+</Button>
+        onClick={() => {
+          if (props.adult < props.guests) {
+            props.setAdult(props.adult + 1)
+          }
+          }}>+</Button>
       </ButtonContainer>
 
       <GuestType style={{'grid-area': 'child'}}>Children
@@ -105,19 +108,19 @@ const [plus, setPlus] = useState(true);
       </GuestType>
       <ButtonContainer style={{'grid-area': 'childbutton'}}>
         <Button
-        onClick={() => {if(child > 0) {setChild(child - 1)}}}>-</Button>
-        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{child} </span>
+        onClick={() => {if(props.child > 0) {props.setChild(props.child - 1)}}}>-</Button>
+        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{props.child} </span>
         <Button
-        onClick={() => {if(child < props.guests && (adult + child < props.guests)) {setChild(child + 1)}}}>+</Button>
+        onClick={() => {if((props.adult + props.child) < props.guests) {props.setChild(props.child + 1)}}}>+</Button>
       </ButtonContainer>
 
       <GuestType style={{'grid-area': 'infant'}}>Infants
          <GuestNote style={{'font-size': '12px'}}>Under 2</GuestNote>
       </GuestType>
       <ButtonContainer style={{'grid-area': 'infantbutton'}}>
-        <Button onClick={() => {if (infant > 0) {setInfant(infant - 1)}}}>-</Button>
-        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{infant} </span>
-        <Button onClick={() => setInfant(infant + 1)}>+</Button>
+        <Button onClick={() => {if (props.infant > 0) {props.setInfant(props.infant - 1)}}}>-</Button>
+        <span style={{'grid-area': 'num', 'align-self': 'center'}}>{props.infant} </span>
+        <Button onClick={() => props.setInfant(props.infant + 1)}>+</Button>
       </ButtonContainer>
 
       <GuestNote style={{'grid-area': 'note'}}>{props.guests} guests maximum. Infants don't count toward the number of guests.</GuestNote>

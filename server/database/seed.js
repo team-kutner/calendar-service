@@ -28,7 +28,7 @@ function seed() {
   const desiredRes = 1000;
 
   for (let i = 0; i < desiredRes; i++) {
-    var checkin = momentRandom('12/25/2021', '11/25/2020').format('YYYY-MM-DD');
+    var checkin = momentRandom('11/25/2021', '12/25/2020').format('YYYY-MM-DD');
     let randomNum = faker.random.number({min: 1, max: 14});
     let checkout = moment(checkin, 'YYYY-MM-DD').add(randomNum, 'days').format('YYYY-MM-DD');
 
