@@ -1,6 +1,5 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import toJson from "enzyme-to-json";
 import GuestSelect from '../components/guestSelect';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -24,6 +23,11 @@ describe('Test suite for GuestSelect component', () => {
     expect(wrapper.find('GuestDetail').exists()).toBeTruthy();
     wrapper.find('.hideGuestArrow').simulate('click');
     expect(wrapper.find('GuestDetail').exists()).toBeFalsy();
+  })
+
+  it('should match snapshot', () => {
+    const wrapper = shallow(<GuestSelect />);
+    expect(wrapper).toMatchSnapshot();
   })
 
 })

@@ -4,7 +4,6 @@ const models = require('../models');
 
 module.exports = {
   get: function (req, res) {
-    //request.params.id
     let id = req.params.id;
     models.listing.getDates(id, (results) => {
       res.json(results);

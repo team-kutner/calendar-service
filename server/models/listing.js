@@ -8,11 +8,8 @@ module.exports = {
     let query = 'SELECT checkIn, checkOut FROM reservations WHERE listingID = ?';
     db.db.query(query, id, (err, result) => {
       if (err) { console.log(err); } else {
-        // for each reservation, extrapolate the dates out so there is a massive array of all unavailable dates
-        //result is an array of objects with checkIn and checkOut
 
         var unavailable = [];
-
         var enumerateDaysBetweenDates = function(startDate, endDate) {
 
           var currDate = moment(startDate).startOf('day');
@@ -22,19 +19,15 @@ module.exports = {
             unavailable.push(currDate.clone().toDate());
           }
         };
-
         for (var dates of result) {
           enumerateDaysBetweenDates(dates.checkIn, dates.checkOut);
         }
-
         const unique = new Set;
         for (var date of unavailable) {
           let newDate = date.toISOString().substring(0, 10);
           unique.add(newDate);
         }
-
         let results = Array.from(unique).sort();
-
         callback(results);
       }
     });

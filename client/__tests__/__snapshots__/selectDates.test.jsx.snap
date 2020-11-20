@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for selectDates component should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    id="in"
+    onClick={[Function]}
+  >
+    <b>
+      CHECK-IN
+    </b>
+    <div
+      style={
+        Object {
+          "color": "#717171",
+          "font-size": "14px",
+        }
+      }
+    />
+  </styled.div>
+  <styled.div
+    id="out"
+    onClick={[Function]}
+  >
+    <b>
+      CHECK-OUT
+    </b>
+    <div
+      style={
+        Object {
+          "color": "#717171",
+          "font-size": "14px",
+        }
+      }
+    />
+  </styled.div>
+  <GuestSelect />
+</styled.div>
+`;

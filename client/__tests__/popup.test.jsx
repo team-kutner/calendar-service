@@ -1,6 +1,5 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import toJson from "enzyme-to-json";
 import Popup from '../components/popup';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -19,6 +18,11 @@ describe('Test suite for Popup component', () => {
   it('it dynamically renders checkOut value', () => {
     const wrapper = shallow(<Popup checkOut={'Check Out'}/>);
     expect(wrapper.find('#checkout').text()).toBe('Check Out')
+  })
+
+  it('should match snapshot', () => {
+    const wrapper = shallow(<Popup />);
+    expect(wrapper).toMatchSnapshot();
   })
 
 })

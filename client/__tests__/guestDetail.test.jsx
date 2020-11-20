@@ -1,6 +1,5 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import toJson from "enzyme-to-json";
 import GuestDetail from '../components/guestDetail';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -14,6 +13,11 @@ describe('Test suite for GuestDetail component', () => {
   it('should render props guest limit', () => {
     const wrapper = shallow(<GuestDetail guests={7}/>);
     expect(wrapper.find('#limit').text()).toContain('7');
+  })
+
+  it('should match snapshot', () => {
+    const wrapper = shallow(<GuestDetail />);
+    expect(wrapper).toMatchSnapshot();
   })
 
 })

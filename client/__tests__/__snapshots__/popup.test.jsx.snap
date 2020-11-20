@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for Popup component should match snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    Select dates
+    <br />
+    <styled.div>
+      Add your travel dates for exact pricing
+    </styled.div>
+  </styled.div>
+  <div
+    id="checkin"
+    style={
+      Object {
+        "display": "flex",
+        "grid-area": "check",
+        "justify-content": "flex-end",
+      }
+    }
+  >
+    <styled.span>
+      <div
+        style={
+          Object {
+            "align-self": "end",
+            "font-size": "12px",
+            "grid-area": "label",
+          }
+        }
+      >
+        CHECK-IN
+      </div>
+      <input
+        className="form"
+        maxlength="10"
+        style={
+          Object {
+            "align-self": "start",
+            "border": "none",
+            "grid-area": "input",
+            "width": "90px",
+          }
+        }
+        type="text"
+      />
+    </styled.span>
+    <styled.span>
+      <b
+        style={
+          Object {
+            "align-self": "end",
+            "grid-area": "label2",
+          }
+        }
+      >
+        CHECK-OUT
+      </b>
+      <div
+        id="checkout"
+        style={
+          Object {
+            "align-self": "start",
+            "color": "#717171",
+            "font-size": "14px",
+            "grid-area": "input2",
+          }
+        }
+      />
+    </styled.span>
+  </div>
+  <Calendar />
+  <div
+    style={
+      Object {
+        "align-items": "flex-end",
+        "display": "flex",
+        "grid-area": "close",
+        "justify-content": "flex-end",
+      }
+    }
+  >
+    <styled.button
+      onClick={[Function]}
+    >
+       Clear dates 
+    </styled.button>
+    <styled.button>
+      Close
+    </styled.button>
+  </div>
+</styled.div>
+`;

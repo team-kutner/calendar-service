@@ -4,7 +4,6 @@ module.exports = {
   // receives get request from client and uses model function to grab booking info from the DB and sends back to the client
   get: function (req, res) {
     let id = req.params.id;
-    console.log('id: ', id);
     models.reservation.getBookingInfo(id, (results) => {
       res.json(results);
       res.end();
