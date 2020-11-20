@@ -26,6 +26,18 @@
   --size: 200px;
 } */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #222222;
+  box-sizing: border-box;
+}
+
 .red-star {
-  color: red;
+  color: #ff385c;
 }

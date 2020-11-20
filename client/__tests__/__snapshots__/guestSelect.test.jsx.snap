@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for GuestSelect component should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    className="showGuestName"
+    onClick={[Function]}
+  >
+    <b>
+      GUESTS
+    </b>
+    <br />
+    <span
+      style={
+        Object {
+          "color": "#717171",
+          "font-size": "14px",
+        }
+      }
+    >
+      1 guest
+    </span>
+  </styled.div>
+  <styled.span
+    className="showGuestArrow"
+    onClick={[Function]}
+  >
+    ˅
+  </styled.span>
+</styled.div>
+`;

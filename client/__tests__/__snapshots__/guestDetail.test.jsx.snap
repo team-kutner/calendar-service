@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for GuestDetail component should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "adult",
+      }
+    }
+  >
+    Adults
+  </styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "adultbutton",
+      }
+    }
+  >
+    <styled.button
+      onClick={[Function]}
+    >
+      -
+    </styled.button>
+    <span
+      style={
+        Object {
+          "align-self": "center",
+          "grid-area": "num",
+        }
+      }
+    >
+       
+    </span>
+    <styled.button
+      onClick={[Function]}
+    >
+      +
+    </styled.button>
+  </styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "child",
+      }
+    }
+  >
+    Children
+    <styled.div
+      style={
+        Object {
+          "font-size": "12px",
+        }
+      }
+    >
+      Ages 2-12
+    </styled.div>
+  </styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "childbutton",
+      }
+    }
+  >
+    <styled.button
+      onClick={[Function]}
+    >
+      -
+    </styled.button>
+    <span
+      style={
+        Object {
+          "align-self": "center",
+          "grid-area": "num",
+        }
+      }
+    >
+       
+    </span>
+    <styled.button
+      onClick={[Function]}
+    >
+      +
+    </styled.button>
+  </styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "infant",
+      }
+    }
+  >
+    Infants
+    <styled.div
+      style={
+        Object {
+          "font-size": "12px",
+        }
+      }
+    >
+      Under 2
+    </styled.div>
+  </styled.div>
+  <styled.div
+    style={
+      Object {
+        "grid-area": "infantbutton",
+      }
+    }
+  >
+    <styled.button
+      onClick={[Function]}
+    >
+      -
+    </styled.button>
+    <span
+      style={
+        Object {
+          "align-self": "center",
+          "grid-area": "num",
+        }
+      }
+    >
+       
+    </span>
+    <styled.button
+      onClick={[Function]}
+    >
+      +
+    </styled.button>
+  </styled.div>
+  <styled.div
+    id="limit"
+    style={
+      Object {
+        "grid-area": "note",
+      }
+    }
+  >
+     guests maximum. Infants don't count toward the number of guests.
+  </styled.div>
+  <styled.button>
+    Close
+  </styled.button>
+</styled.div>
+`;

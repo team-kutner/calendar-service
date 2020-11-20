@@ -11,13 +11,14 @@ function seed() {
     let newListing = [
       faker.company.catchPhraseDescriptor(),
       faker.lorem.sentence(),
-      faker.finance.amount(30, 750, 2),
+      faker.random.number({min: 1, max: 15}),
+      faker.random.number({min: 30, max: 550}),
       faker.finance.amount(10, 120, 2),
       faker.finance.amount(10, 75, 2),
-      faker.finance.amount(0, 5, 2),
+      faker.finance.amount(2, 5, 2),
       faker.random.number({min: 1, max: 500})
     ];
-    let query = 'INSERT INTO listings (name, description, pricePerNight, cleaningFee, serviceFee, rating, numRatings) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    let query = 'INSERT INTO listings (name, description, guestMax, pricePerNight, cleaningFee, serviceFee, rating, numRatings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
     db.db.query(query, newListing, (err, result) => {
       if (err) { console.log(err); } else {
         console.log('Listing added');
@@ -27,7 +28,7 @@ function seed() {
   const desiredRes = 1000;
 
   for (let i = 0; i < desiredRes; i++) {
-    var checkin = momentRandom('12/25/2021', '11/25/2020').format('YYYY-MM-DD');
+    var checkin = momentRandom('11/25/2021', '12/25/2020').format('YYYY-MM-DD');
     let randomNum = faker.random.number({min: 1, max: 14});
     let checkout = moment(checkin, 'YYYY-MM-DD').add(randomNum, 'days').format('YYYY-MM-DD');
 

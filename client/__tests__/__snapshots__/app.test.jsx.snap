@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test suite for App component should match snapshot 1`] = `
+<Fragment>
+  <styled.div>
+    <styled.div>
+      <styled.span>
+        <b>
+          $
+          0
+        </b>
+      </styled.span>
+      <styled.span>
+         /
+      </styled.span>
+       night
+    </styled.div>
+    <styled.div>
+      <span
+        className="red-star"
+      >
+        ★
+      </span>
+       
+      <b>
+        0
+      </b>
+       
+      <span
+        style={
+          Object {
+            "color": "grey",
+          }
+        }
+      >
+        (
+        0
+        )
+      </span>
+    </styled.div>
+    <SelectDates
+      adult={1}
+      booked={Array []}
+      change={false}
+      checkIn="Add date"
+      checkOut="Add date"
+      child={0}
+      click={1}
+      guests={0}
+      infant={0}
+      setAdult={[Function]}
+      setChange={[Function]}
+      setCheckIn={[Function]}
+      setCheckOut={[Function]}
+      setChild={[Function]}
+      setClick={[Function]}
+      setInfant={[Function]}
+    />
+    <styled.button
+      className="mouse-cursor"
+    >
+      Check availability
+    </styled.button>
+  </styled.div>
+</Fragment>
+`;
