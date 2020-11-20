@@ -6,7 +6,6 @@ module.exports = {
   get: function (req, res) {
     //request.params.id
     let id = req.params.id;
-    console.log('id: ', id);
     models.listing.getDates(id, (results) => {
       res.json(results);
       res.end();

@@ -10,7 +10,7 @@
     "start": "nodemon ./server/server.js",
     "build": "webpack -d --watch",
     "seed": "mysql -u root -p < schema.sql && node ./server/database/seed.js",
-    "test": "jest",
+    "test": "jest --verbose",
     "test:watch": "jest --watch"
   },
   "dependencies": {
@@ -45,9 +45,9 @@
     "babel-loader": "^8.2.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "jest": "^26.6.3",
-    "react-test-renderer": "^17.0.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },
@@ -60,5 +60,10 @@
   "bugs": {
     "url": "https://github.com/teamTarly/aquabnb-booking/issues"
   },
-  "homepage": "https://github.com/teamTarly/aquabnb-booking#readme"
+  "homepage": "https://github.com/teamTarly/aquabnb-booking#readme",
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
 }
