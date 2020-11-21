@@ -32,6 +32,10 @@ font-size: 14px;
 align-self: center;
 `;
 
+export const GuestNote12 = styled(GuestNote)`
+font-size: 12px;
+`;
+
 export const Close = styled.button`
 grid-area: close;
 cursor: pointer;
@@ -75,4 +79,9 @@ justify-self: stretch;
 grid-template-columns: 1fr 1fr 1fr;
 grid-template-rows: auto;
 grid-template-areas:  "minus num plus";
+`;
+
+export const Span = styled.div`
+grid-area: num;
+align-self: center;
 `;

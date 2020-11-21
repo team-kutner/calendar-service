@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import GuestSelect from './guestSelect.jsx';
 import Popup from './popup.jsx';
-import {CalendarContainer, Checkin, Checkout} from './styles/selectDates.styles.js';
+import {CalendarContainer, Checkin, Checkout, Div} from './styles/selectDates.styles.js';
 
 function SelectDates(props) {
 
@@ -17,10 +17,10 @@ function SelectDates(props) {
   return (
     <CalendarContainer>
       { !show && (<><Checkin id='in' onClick={handleShow}><b>CHECK-IN</b>
-        <div style={{'color': '#717171', 'font-size': '14px'}}>{props.checkIn}</div>
+        <Div>{props.checkIn}</Div>
       </Checkin>
       <Checkout id='out' onClick={handleShow}><b>CHECK-OUT</b>
-        <div style={{'color': '#717171', 'font-size': '14px'}}>{props.checkOut}</div>
+        <Div>{props.checkOut}</Div>
       </Checkout></>) }
 
       { show && (<Popup change={props.change} setChange={props.setChange} close={handleClose} click={props.click} setClick={props.setClick} checkIn={props.checkIn} checkOut={props.checkOut} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>)}

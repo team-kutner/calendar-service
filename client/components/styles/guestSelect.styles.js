@@ -5,7 +5,7 @@ grid-area: guest;
 display: grid;
 border: 1px solid #505050;
 border-radius: 0 0 15px 15px;
-padding: 20px;
+padding: 11px;
 grid-template-columns: 1fr, 1fr;
 grid-template-areas: "guest arrow";
 position: relative;
@@ -28,4 +28,9 @@ align-self: start;
 color: black;
 justify-self: end;
 cursor: pointer;
+`;
+
+export const Span = styled.span`
+color: #717171;
+font-size: 14px;
 `;

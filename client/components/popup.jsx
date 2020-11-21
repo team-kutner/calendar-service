@@ -1,36 +1,38 @@
 import React, { useState, useEffect, Component } from 'react';
 import styled, { css } from 'styled-components';
 import Calendar from './calendar.jsx';
-import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear} from './styles/popup.styles.js';
+import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/popup.styles.js';
 
 function Popup(props) {
-
   return (
 
     <Modal>
-
       <Header>Select dates<br/>
         <Notes>Add your travel dates for exact pricing</Notes>
       </Header>
-      <div id='checkin' style={{'display': 'flex', 'grid-area': 'check', 'justify-content': 'flex-end'}}>
+      <Dates id='checkin'>
         <CheckinInput>
-          <div style={{'grid-area': 'label', 'font-size': '12px', 'align-self': 'end'}}>CHECK-IN</div>
-          <input className='form' maxlength='10' placeholder={props.checkIn} style={{'grid-area': 'input', 'border': 'none', 'width': '90px', 'align-self': 'start'}} type='text'></input>
+          <Label>CHECK-IN</Label>
+          <Input className='form' maxlength='10' placeholder={props.checkIn} type='text'></Input>
 
         </CheckinInput>
-        <CheckoutInput><b style={{'grid-area': 'label2', 'align-self': 'end'}}>CHECK-OUT</b>
-          <div id='checkout' style={{'color': '#717171', 'font-size': '14px', 'grid-area': 'input2', 'align-self': 'start'}}>{props.checkOut}</div>
+        <CheckoutInput><Label2>CHECK-OUT</Label2>
+          <Checkout id='checkout'>{props.checkOut}</Checkout>
         </CheckoutInput>
-      </div>
+      </Dates>
 
       <Calendar change={props.change} setChange={props.setChange} close={props.close} click={props.click} setClick={props.setClick} checkIn={props.checkIn} checkOut={props.checkOut} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>
 
-      <div style={{'display': 'flex', 'grid-area': 'close', 'justify-content': 'flex-end', 'align-items': 'flex-end'}}>
-        <Clear onClick={() => {props.setCheckIn('Add date'); props.setCheckOut('Add date'); props.setClick(1);}}> Clear dates </Clear>
+      <Footer>
+        <Clear onClick={() => {
+          props.setCheckIn('Add date');
+          props.setCheckOut('Add date');
+          props.setClick(0);
+          props.setChange(false);
+          }}> Clear dates </Clear>
         <Close onClick={props.close}>Close</Close>
-      </div>
+      </Footer>
     </Modal>
-
   )
 }
 

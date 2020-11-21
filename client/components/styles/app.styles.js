@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
 display: grid;
+box-sizing: border-box;
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 4fr 2fr;
 grid-template-areas:  "price rating"
@@ -10,7 +11,7 @@ grid-template-areas:  "price rating"
 grid-row-gap: 20px;
 height: 276px;
 width: 30%;
-max-width: 325px;
+max-width: 372px;
 position: relative;
 border-radius: 15px;
 border: 1px solid #D3D3D3;
@@ -27,11 +28,11 @@ grid-template-areas:  "price rating"
                       "calendar calendar"
                       "button button"
                       "note note"
-                      "night nightFee"
-                      "clean cleanFee"
-                      "service serviceFee"
-                      "tax taxFee"
-                      "total totalFee";
+                      "night night"
+                      "clean clean"
+                      "service service"
+                      "tax tax"
+                      "total total";
 height: 511px;
 `;
 
@@ -57,6 +58,9 @@ cursor: pointer;
 
 export const Button = styled.button`
 grid-area: button;
+box-sizing: border-box;
+height: 48px;
+width: 322px;
 background: #dc1f60;
 border-radius: 15px;
 border: 2px solid #dc1f60;
@@ -95,7 +99,7 @@ grid-area: night;
 `;
 
 export const CostNight = styled(Cost)`
-grid-area: nightFee;
+grid-area: night;
 `;
 
 export const FeeClean = styled(Fee)`
@@ -103,7 +107,7 @@ grid-area: clean;
 `;
 
 export const CostClean = styled(Cost)`
-grid-area: cleanFee;
+grid-area: clean;
 `;
 
 export const FeeService = styled(Fee)`
@@ -111,7 +115,7 @@ grid-area: service;
 `;
 
 export const CostService = styled(Cost)`
-grid-area: serviceFee;
+grid-area: service;
 `;
 
 export const FeeTax = styled(Fee)`
@@ -119,7 +123,7 @@ grid-area: tax;
 `;
 
 export const CostTax = styled(Cost)`
-grid-area: taxFee;
+grid-area: tax;
 `;
 
 export const FeeTotal = styled(Fee)`
@@ -129,5 +133,9 @@ cursor: none;
 `;
 
 export const CostTotal = styled(Cost)`
-grid-area: totalFee;
+grid-area: total;
+`;
+
+export const Star = styled.span`
+color: #ff385c;
 `;

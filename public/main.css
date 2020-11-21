@@ -1,36 +1,9 @@
-/* .mouse-cursor {
-  position: relative;
-  cursor: pointer;
-  outline: none;
-  overflow: hidden;
-}
-
-.mouse-cursor span {
-  position: relative;
-}
-
-.mouse-cursor:before {
-  --size: 0;
-  content: '';
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--size);
-  height: var(--size);
-  background: radial-gradient(circle closest-side, pink, transparent);
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease;
-}
-
-.mouse-cursor:hover:before {
-  --size: 200px;
-} */
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+/*
 *:focus {
   outline: none;
-}
+} */
 
 body {
   font-family: 'Montserrat', sans-serif;
