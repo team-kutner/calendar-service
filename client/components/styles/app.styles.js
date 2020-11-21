@@ -8,7 +8,7 @@ grid-template-rows: 1fr 4fr 2fr;
 grid-template-areas:  "price rating"
                       "calendar calendar"
                       "button button";
-grid-row-gap: 20px;
+grid-row-gap: 10px;
 height: 276px;
 width: 30%;
 max-width: 372px;
@@ -23,7 +23,7 @@ margin-right: 50px;
 
 export const ReserveContainer = styled(Container)`
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 4fr 2fr repeat(1fr, 5) 2fr;
+grid-template-rows: 1fr 4fr 2fr repeat(1fr, 6) 2fr;
 grid-template-areas:  "price rating"
                       "calendar calendar"
                       "button button"
@@ -32,6 +32,7 @@ grid-template-areas:  "price rating"
                       "clean clean"
                       "service service"
                       "tax tax"
+                      "line line"
                       "total total";
 height: 511px;
 `;
@@ -58,6 +59,7 @@ cursor: pointer;
 
 export const Button = styled.button`
 grid-area: button;
+align-self: center;
 box-sizing: border-box;
 height: 48px;
 width: 322px;
@@ -129,13 +131,25 @@ grid-area: tax;
 export const FeeTotal = styled(Fee)`
 grid-area: total;
 text-decoration: none;
-cursor: none;
+cursor: auto;
+align-self: start;
+font-weight: 900;
 `;
 
 export const CostTotal = styled(Cost)`
 grid-area: total;
+align-self: start;
+font-weight: 900;
 `;
 
 export const Star = styled.span`
 color: #ff385c;
+`;
+
+export const Line = styled.hr`
+border-top: 1px solid #A9A9A9;
+display: block;
+width: 100%;
+grid-area: line;
+align-self: center;
 `;
