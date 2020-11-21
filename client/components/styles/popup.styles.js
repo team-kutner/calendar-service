@@ -124,4 +124,7 @@ border: none;
 outline: none;
 width: 90px;
 align-self: start;
+font-size: 14px;
+height: 20px;
+font-family: 'Montserrat', sans-serif;
 `;

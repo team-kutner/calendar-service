@@ -52,7 +52,7 @@ grid-template-areas: "cal1 cal2";
 
 export const Day = styled.div`
 width: 14%;
-height: 45px;
+height: 40px;
 display: flex;
 flex-wrap: wrap;
 align-items: center;

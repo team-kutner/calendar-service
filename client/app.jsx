@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import SelectDates from './components/selectDates.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal} from './components/styles/app.styles.js';
+import {Container, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -100,8 +100,9 @@ function App() {
         <CostService>${service}</CostService>
         <FeeTax>Occupancy taxes and fees</FeeTax>
         <CostTax>${((price*nights)*0.18).toFixed(2)}</CostTax>
-        <FeeTotal><b>Total</b></FeeTotal>
-        <CostTotal><b>${total}</b></CostTotal>
+        <Line></Line>
+        <FeeTotal>Total</FeeTotal>
+        <CostTotal>${total}</CostTotal>
       </ReserveContainer>
     )}
     </>
