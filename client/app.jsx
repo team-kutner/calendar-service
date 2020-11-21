@@ -18,14 +18,15 @@ function App() {
   const [checkIn, setCheckIn] = useState('Add date');
   const [checkOut, setCheckOut] = useState('Add date');
   const [booked, setBooked] = useState([]);
-  const [click, setClick] = useState(1);
+  const [click, setClick] = useState(0);
   const [nights, setNights] = useState(0);
   const [change, setChange] = useState(false);
 
   useEffect(() => {
-    let url = window.location.href;
+    let url = (window.location.href).split('/');
+    let homeId = url[url.length-1] || '75';
 
-    axios.get('/api/homes/75/reservation')
+    axios.get(`/api/homes/${homeId}/reservation`)
     .then((res) => {
       let data = res.data[0];
       setGuests(data.guestMax);
@@ -37,7 +38,7 @@ function App() {
     })
     .catch(err => console.log(err));
 
-    axios.get('/api/homes/75/listing')
+    axios.get(`/api/homes/${homeId}/listing`)
     .then((res) => {
       setBooked(res.data)
     })
@@ -98,7 +99,7 @@ function App() {
         <FeeService>Service fee</FeeService>
         <CostService>${service}</CostService>
         <FeeTax>Occupancy taxes and fees</FeeTax>
-        <CostTax>${(price*nights)*0.18}</CostTax>
+        <CostTax>${((price*nights)*0.18).toFixed(2)}</CostTax>
         <FeeTotal><b>Total</b></FeeTotal>
         <CostTotal><b>${total}</b></CostTotal>
       </ReserveContainer>
