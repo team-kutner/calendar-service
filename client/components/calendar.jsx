@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import styled, { css } from 'styled-components';
+const {React} = window;
+const {useState, useEffect} = React;
+const {styled} = global;
 import moment from 'moment';
 import {Frame, Header, Button, Button2, NoButton, Body, Day, DayNum, DayBook, Div, Div2, Span, Span2} from './styles/calendar.styles.js';
 
@@ -33,7 +36,7 @@ function Calendar(props) {
     let selectedDate = e.target.id;
 
     if (selectedDate.length === 10) {
-      props.setClick(++props.click)
+      props.setClick(props.click + 1);
       if ((props.click % 2 === 1) || (props.checkOut !== 'Add date')) {
         props.setCheckIn(e.target.id);
         props.setCheckOut('Add date');

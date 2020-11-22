@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import styled, { css } from 'styled-components';
+const {React} = window;
+const {useState, useEffect} = React;
+const {styled} = global;
 import SelectDates from './components/selectDates.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line} from './components/styles/app.styles.js';
+import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -18,7 +21,7 @@ function App() {
   const [checkIn, setCheckIn] = useState('Add date');
   const [checkOut, setCheckOut] = useState('Add date');
   const [booked, setBooked] = useState([]);
-  const [click, setClick] = useState(0);
+  const [click, setClick] = useState(1);
   const [nights, setNights] = useState(0);
   const [change, setChange] = useState(false);
 
@@ -63,7 +66,7 @@ function App() {
   return (
     <>
     { (!change || (checkIn === checkOut)) && (
-      <Container>
+      <Container1>
         <Price>
           <TwentyTwo><b>${price}</b></TwentyTwo>
           <Sixteen> /</Sixteen> night
@@ -73,7 +76,7 @@ function App() {
         </Rating>
         <SelectDates change={change} setChange={setChange} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant} guests={guests}/>
         <Button className='mouse-cursor'>Check availability</Button>
-      </Container>
+      </Container1>
     )}
 
     { (change && (checkIn !== checkOut)) && (

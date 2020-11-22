@@ -1,4 +1,6 @@
-import styled, { css } from 'styled-components';
+// import styled, { css } from 'styled-components';
+const {styled} = global;
+const {css} = styled;
 
 export const Wrapper = styled.div`
 grid-area: guest;
@@ -19,7 +21,7 @@ vertical-align: middle;
 cursor: pointer;
 `;
 
-export const Arrow = styled.span`
+export const Arrow1 = styled.span`
 grid-area: arrow;
 font-size: 50px;
 width: 30px;

@@ -1,4 +1,6 @@
-import styled, { css } from 'styled-components';
+// import styled, { css } from 'styled-components';
+const {styled} = global;
+const {css} = styled;
 
 export const Modal = styled.div`
 position: absolute;

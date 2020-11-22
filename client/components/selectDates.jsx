@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import styled, { css } from 'styled-components';
+const {React} = window;
+const {useState} = React;
+const {styled} = global;
 import GuestSelect from './guestSelect.jsx';
 import Popup from './popup.jsx';
 import {CalendarContainer, Checkin, Checkout, Div} from './styles/selectDates.styles.js';

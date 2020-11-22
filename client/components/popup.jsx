@@ -1,5 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
-import styled, { css } from 'styled-components';
+// import React, { useState, useEffect, Component } from 'react';
+// import styled, { css } from 'styled-components';
+const {React} = window;
+const {styled} = global;
 import Calendar from './calendar.jsx';
 import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/popup.styles.js';
 
@@ -27,7 +29,7 @@ function Popup(props) {
         <Clear onClick={() => {
           props.setCheckIn('Add date');
           props.setCheckOut('Add date');
-          props.setClick(0);
+          props.setClick(1);
           props.setChange(false);
           }}> Clear dates </Clear>
         <Close onClick={props.close}>Close</Close>

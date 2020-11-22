@@ -1,6 +1,8 @@
-import styled, { css } from 'styled-components';
+// import styled, { css } from 'styled-components';
+const {styled} = global;
+const {css} = styled;
 
-export const Container = styled.div`
+export const Container1 = styled.div`
 display: grid;
 box-sizing: border-box;
 grid-template-columns: 1fr 1fr;
@@ -10,7 +12,7 @@ grid-template-areas:  "price rating"
                       "button button";
 grid-row-gap: 10px;
 height: 276px;
-width: 30%;
+width: 100%;
 max-width: 372px;
 position: relative;
 border-radius: 15px;
@@ -21,7 +23,7 @@ margin-left: auto;
 margin-right: 50px;
 `;
 
-export const ReserveContainer = styled(Container)`
+export const ReserveContainer = styled(Container1)`
 grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 4fr 2fr repeat(1fr, 6) 2fr;
 grid-template-areas:  "price rating"
@@ -62,15 +64,16 @@ grid-area: button;
 align-self: center;
 box-sizing: border-box;
 height: 48px;
-width: 322px;
-background: #dc1f60;
-border-radius: 15px;
+max-width: 322px;
+width: 100%;
 border: 2px solid #dc1f60;
 color: white;
 font-size: 20px;
 padding: 10px;
 font-family: 'Montserrat', sans-serif;
 cursor: pointer;
+background-color: #dc1f60;
+border-radius: 15px;
 `;
 
 export const Text = styled.div`
