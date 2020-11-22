@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
+// import React, { useState, useEffect } from 'react';
+// import styled, { css } from 'styled-components';
+const {React} = window;
+const {styled} = global;
 import {GuestExpand, GuestType, GuestNote, GuestNote12, Close, Button, ButtonContainer, Span} from './styles/guestDetail.styles.js';
 
 function GuestDetail(props) {

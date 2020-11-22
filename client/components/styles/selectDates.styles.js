@@ -1,10 +1,13 @@
-import styled, { css } from 'styled-components';
+// import styled, { css } from 'styled-components';
+const {styled} = global;
+const {css} = styled;
 
 export const CalendarContainer = styled.div`
 display: grid;
 box-sizing: border-box;
 height: 112px;
-width: 322px;
+max-width: 322px;
+width: 100%;
 align-self: center;
 grid-area: calendar;
 grid-template-columns: 1fr 1fr;
