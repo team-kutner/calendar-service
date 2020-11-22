@@ -6,7 +6,7 @@ const {styled} = global;
 import SelectDates from './components/selectDates.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line} from './components/styles/app.styles.js';
+import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -72,7 +72,7 @@ function App() {
           <Sixteen> /</Sixteen> night
         </Price>
         <Rating>
-          <span className="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
+          <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
         <SelectDates change={change} setChange={setChange} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant} guests={guests}/>
         <Button className='mouse-cursor'>Check availability</Button>
