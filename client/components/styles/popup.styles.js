@@ -32,7 +32,7 @@ grid-template-rows: 50% 50%;
 grid-template-areas: "label"
                     "input";
 border: 1px solid	#717171;
-border-radius: 15px;
+border-radius: 10px;
 font-size: 14px;
 padding-left: 5px;
 `;
@@ -46,9 +46,9 @@ grid-template-rows: 50% 50%;
 grid-template-areas: "label2"
                     "input2";
 border: 1px solid #717171;
-border-radius: 15px;
+border-radius: 10px;
 font-size: 12px;
-background: rgb(176, 176, 176);
+background: #F5F5F5;
 padding-left: 5px;
 `;
 
@@ -64,7 +64,8 @@ font-size: 14px;
 export const Close = styled.button`
 cursor: pointer;
 padding: 0;
-border-radius: 15px;
+border: none;
+border-radius: 10px;
 background: #222;
 height: 34px;
 width: 69px;
@@ -84,8 +85,8 @@ border: none;
 background: white;
 text-decoration: underline;
 &:hover {
-  background: #D3D3D3;
-  border-radius: 15px;
+  background: #F5F5F5;
+  border-radius: 10px;
 }
 `;
 
@@ -99,22 +100,23 @@ export const Footer = styled(Dates)`
 grid-area: close;
 align-items: flex-end;
 justify-content: flex-end;
+gap: 10px;
 `;
 
 export const Label = styled.div`
 grid-area: label;
-font-size: 12px;
+font-size: 10px;
 align-self: end;
+font-weight: 900;
 `;
 
-export const Label2 = styled.b`
+export const Label2 = styled(Label)`
 grid-area: label2;
-align-self: end;
-color: #717171;
+color: #D3D3D3;
 `;
 
 export const Checkout = styled.div`
-color: #717171;
+color: #D3D3D3;
 font-size: 14px;
 grid-area: input2;
 align-self: start;

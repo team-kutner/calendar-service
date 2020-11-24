@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, { shallow } from '../../enzyme.js';
 import Adapter from 'enzyme-adapter-react-16';
-import App from '../app.jsx';
+import App from '../App.jsx';
 
 describe('Test suite for App component', () => {
   it('it renders without crashing', () => {

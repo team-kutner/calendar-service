@@ -3,25 +3,21 @@
 const {React} = window;
 const {useState, useEffect} = React;
 const {styled} = global;
-import SelectDates from './components/selectDates.jsx';
+import DateGuestSelect from './components/DateGuestSelect.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
+import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/App.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState(0);
-  const [guests, setGuests] = useState(0);
+  const [maxGuests, setGuests] = useState(0);
   const [clean, setClean] = useState(0);
   const [service, setService] = useState(0);
-  const [adult, setAdult] = useState(1);
-  const [child, setChild] = useState(0);
-  const [infant, setInfant] = useState(0);
   const [checkIn, setCheckIn] = useState('Add date');
   const [checkOut, setCheckOut] = useState('Add date');
   const [booked, setBooked] = useState([]);
-  const [click, setClick] = useState(1);
   const [nights, setNights] = useState(0);
   const [change, setChange] = useState(false);
 
@@ -74,7 +70,7 @@ function App() {
         <Rating>
           <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
-        <SelectDates change={change} setChange={setChange} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant} guests={guests}/>
+        <DateGuestSelect setChange={setChange} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
         <Button className='mouse-cursor'>Check availability</Button>
       </Container1>
     )}
@@ -91,7 +87,7 @@ function App() {
           <span className="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
 
-        <SelectDates change={change} setChange={setChange} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant} guests={guests}/>
+        <DateGuestSelect setChange={setChange} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
 
         <Button className='mouse-cursor'>Reserve</Button>
         <TextNote>You won't be charged yet</TextNote>

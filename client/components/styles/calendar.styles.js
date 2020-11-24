@@ -61,24 +61,27 @@ align-items: center;
 justify-content: center;
 `;
 
-export const DayNum = styled(Day)`
-  cursor: pointer;
-    &:hover {
-      box-sizing: border-box;
-      border: 1px solid black;
-      border-radius: 50%;
-    }
+export const AvailableDay = styled(Day)`
+  cursor: ${props => props.hover ? 'pointer' : 'auto'};
 
-    ${props =>
-      props.select &&
-      css `
-      color: white;
-      background: black;
-      border-radius: 50%;
-    `}
+  &:hover {
+    box-sizing: border-box;
+    border: ${props => props.hover ? '1px solid black' : 'none'};
+    border-radius: ${props => props.hover ? '50%' : 'none'};
+  }
+
+  ${props =>
+    props.select &&
+    css `
+    color: white;
+    background: black;
+    border-radius: 50%;
+  `}
+
+
 `;
 
-export const DayBook = styled(Day)`
+export const BookedDay = styled(Day)`
 text-decoration: line-through;
 color: #B0B0B0;
 `;

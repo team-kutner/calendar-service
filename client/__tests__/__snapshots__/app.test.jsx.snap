@@ -21,11 +21,11 @@ exports[`Test suite for App component should match snapshot 1`] = `
       >
         ★
       </span>
-       
+
       <b>
         0
       </b>
-       
+
       <span
         style={
           Object {
@@ -46,7 +46,7 @@ exports[`Test suite for App component should match snapshot 1`] = `
       checkOut="Add date"
       child={0}
       click={1}
-      guests={0}
+      maxGuests={0}
       infant={0}
       setAdult={[Function]}
       setChange={[Function]}

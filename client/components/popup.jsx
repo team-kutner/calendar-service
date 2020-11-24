@@ -2,10 +2,10 @@
 // import styled, { css } from 'styled-components';
 const {React} = window;
 const {styled} = global;
-import Calendar from './calendar.jsx';
-import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/popup.styles.js';
+import Calendar from './Calendar.jsx';
+import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/Popup.styles.js';
 
-function Popup(props) {
+function Popup({invalid, setInvalid, change, setChange, close, click, setClick, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked}) {
   return (
 
     <Modal>
@@ -15,24 +15,24 @@ function Popup(props) {
       <Dates id='checkin'>
         <CheckinInput>
           <Label>CHECK-IN</Label>
-          <Input className='form' maxlength='10' placeholder={props.checkIn} type='text'></Input>
+          <Input className='form' maxlength='10' placeholder={checkIn} type='text'></Input>
 
         </CheckinInput>
         <CheckoutInput><Label2>CHECK-OUT</Label2>
-          <Checkout id='checkout'>{props.checkOut}</Checkout>
+          <Checkout id='checkout'>{checkOut}</Checkout>
         </CheckoutInput>
       </Dates>
 
-      <Calendar change={props.change} setChange={props.setChange} close={props.close} click={props.click} setClick={props.setClick} checkIn={props.checkIn} checkOut={props.checkOut} setCheckIn={props.setCheckIn} setCheckOut={props.setCheckOut} booked={props.booked}/>
+      <Calendar invalid={invalid} setInvalid={setInvalid} setChange={setChange} close={close} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} />
 
       <Footer>
         <Clear onClick={() => {
-          props.setCheckIn('Add date');
-          props.setCheckOut('Add date');
-          props.setClick(1);
-          props.setChange(false);
+          setCheckIn('Add date');
+          setCheckOut('Add date');
+          setClick(1);
+          setChange(false);
           }}> Clear dates </Clear>
-        <Close onClick={props.close}>Close</Close>
+        <Close onClick={close}>Close</Close>
       </Footer>
     </Modal>
   )
