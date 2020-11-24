@@ -18,6 +18,7 @@ background: white;
 position: absolute;
 z-index: 10;
 top: 100%;
+right: -1.5%;
 box-shadow: 0 0 20px #DCDCDC;
 padding: 10px 20px;
 `;
