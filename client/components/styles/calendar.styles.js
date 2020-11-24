@@ -1,6 +1,8 @@
 // import styled, { css } from 'styled-components';
 const {styled} = global;
 const {css} = styled;
+import keyframes from 'keyframe';
+
 
 export const Frame = styled.div`
 box-sizing: border-box;
@@ -24,16 +26,41 @@ grid-template-areas: "month1 month2";
 
 export const Button = styled.button`
 cursor: pointer;
+box-sizing: border-box;
 background: none;
+font-size: 20px;
+width: 30px;
+height: 100%;
+margin-right: 10px;
 border: none;
 grid-area: month1;
 align-self: center;
 justify-self: start;
+&:hover {
+    background: #F5F5F5;
+    border-radius: 50%;
+  }
+&:active {
+  /* animation-name: slideout;
+  animation-duration: 1s; */
+  background: black;
+}
 `;
+
+// @keyframes slideout {
+//   from {
+//     margin-left: 100%;
+//   }
+
+//   to {
+//     margin-left: 100%;
+//   }
+// }
 
 export const Button2 = styled(Button)`
 grid-area: month2;
 justify-self: end;
+margin-left: 10px;
 `;
 
 export const NoButton = styled(Button)`
@@ -61,24 +88,27 @@ align-items: center;
 justify-content: center;
 `;
 
-export const DayNum = styled(Day)`
-  cursor: pointer;
-    &:hover {
-      box-sizing: border-box;
-      border: 1px solid black;
-      border-radius: 50%;
-    }
+export const AvailableDay = styled(Day)`
+  cursor: ${props => props.hover ? 'pointer' : 'auto'};
 
-    ${props =>
-      props.select &&
-      css `
-      color: white;
-      background: black;
-      border-radius: 50%;
-    `}
+  &:hover {
+    box-sizing: border-box;
+    border: ${props => props.hover ? '1px solid black' : 'none'};
+    border-radius: ${props => props.hover ? '50%' : 'none'};
+  }
+
+  ${props =>
+    props.select &&
+    css `
+    color: white;
+    background: black;
+    border-radius: 50%;
+  `}
+
+
 `;
 
-export const DayBook = styled(Day)`
+export const BookedDay = styled(Day)`
 text-decoration: line-through;
 color: #B0B0B0;
 `;

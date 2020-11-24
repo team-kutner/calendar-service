@@ -3,31 +3,35 @@
 const {React} = window;
 const {useState} = React;
 const {styled} = global;
-import GuestDetail from './guestDetail.jsx'
-import {Wrapper, Guest, Arrow1, Span} from './styles/guestSelect.styles.js';
+import GuestPopup from './GuestPopup.jsx'
+import {Wrapper, Guest, Arrow1, Span} from './styles/GuestSelect.styles.js';
 
-function GuestSelect(props) {
-  const [click, setClick] = useState(true);
+function GuestSelect({maxGuests, adult, setAdult, child, setChild, infant, setInfant}) {
+  const [showGuest, setShowGuest] = useState(false);
 
-  const handleClick = function() {
-    setClick(!click);
+  const toggleGuest = function() {
+    setShowGuest(!showGuest);
   };
+
+  const arrowDirection = showGuest ? `\u02c5` : `\u02c4`;
+  const infantDisplay = infant === 1 ? 'infant' : 'infants';
+  const guestDisplay = adult + child < 2 ? 'guest' : 'guests'
 
   return (
     <Wrapper>
-      {/* this rendering needs to show the current state of the guests - figure out the syntax */}
-
-      { click && (<><Guest className='showGuestName' onClick={handleClick}><b>GUESTS</b><br></br>
-        <Span>1 guest</Span>
+      <Guest className='showGuestName' onClick={toggleGuest}>
+        <b>GUESTS</b><br/>
+        <Span>
+          {adult + child} {guestDisplay}
+          {(infant > 0) && <Span>, {infant} {infantDisplay} </Span>}
+        </Span>
       </Guest>
-      <Arrow1 className='showGuestArrow' onClick={handleClick}>{`\u02c5`}</Arrow1></>) }
+      <Arrow1 className='showGuestArrow' onClick={toggleGuest}>{arrowDirection}</Arrow1>
 
-      { !click && (<><Guest className='hideGuestName' onClick={handleClick}><b>GUESTS</b><br></br>
-        <Span>1 guest</Span>
-      </Guest>
-      <Arrow1 className='hideGuestArrow' onClick={handleClick}>{`\u02c4`}</Arrow1>
-      <GuestDetail guests={props.guests} click={handleClick} adult={props.adult} setAdult={props.setAdult} child={props.child} setChild={props.setChild} infant={props.infant} setInfant={props.setInfant}/></>) }
-
+      {
+      showGuest &&
+        (<GuestPopup maxGuests={maxGuests} toggleGuest={toggleGuest} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant}/>)
+      }
     </Wrapper>
   )
 }

@@ -23,7 +23,7 @@ cursor: pointer;
 
 export const Arrow1 = styled.span`
 grid-area: arrow;
-font-size: 50px;
+font-size: 40px;
 width: 30px;
 height: 30px;
 align-self: start;

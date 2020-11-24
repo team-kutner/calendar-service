@@ -18,6 +18,7 @@ background: white;
 position: absolute;
 z-index: 10;
 top: 100%;
+right: -1.5%;
 box-shadow: 0 0 20px #DCDCDC;
 padding: 10px 20px;
 `;
@@ -51,8 +52,8 @@ justify-self: end;
 font-size: 16px;
 
 &:hover {
-  background: #DCDCDC;
-  border-radius: 15px;
+  background: #F5F5F5;
+  border-radius: 10px;
 }
 `;
 
@@ -62,14 +63,14 @@ width: 32px;
 border-radius: 50%;
 align-self: center;
 justify-self: center;
-cursor: pointer;
+cursor: ${props => props.invalid ? 'no-drop' : 'pointer'};
 background: none;
-border: 1px solid	#505050;
-color: #717171;
+border: ${props => props.invalid ? '1px solid #B0B0B0' :'1px solid	#505050'};
+color: ${props => props.invalid ? '#B0B0B0' : '#717171'};
 font-size: 18px;
 &:hover {
-  border: 1px solid black;
-  color: black;
+  border: ${props => props.invalid ? '1px solid #B0B0B0': '1px solid black'};
+  color: ${props => props.invalid ? '#B0B0B0' : 'black'};
 }
 `;
 
