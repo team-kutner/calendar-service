@@ -4,8 +4,8 @@ const {React} = window;
 const {useState, useEffect} = React;
 const {styled} = global;
 import moment from 'moment';
-import Month from './Month.jsx';
-import {Frame, Header, Button, Button2, NoButton, Body, Day, Div, Div2, Span, Span2} from './styles/Calendar.styles.js';
+import Month from './month.jsx';
+import {Frame, Header, Button, Button2, NoButton, Body, Day, Div, Div2, Span, Span2} from './styles/calendar.styles.js';
 
 function Calendar({
   setCheckIn, setCheckOut, close, booked, invalid, setInvalid, setChangeAppView, checkOut, checkIn, month, setCurrMonth, next, setNextMonth

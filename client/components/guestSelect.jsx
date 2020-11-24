@@ -3,8 +3,8 @@
 const {React} = window;
 const {useState} = React;
 const {styled} = global;
-import GuestPopup from './GuestPopup.jsx'
-import {Wrapper, Guest, Arrow1, Span} from './styles/GuestSelect.styles.js';
+import GuestPopup from './guestPopup.jsx'
+import {Wrapper, Guest, Arrow1, Span} from './styles/guestSelect.styles.js';
 
 function GuestSelect({maxGuests, adult, setAdult, child, setChild, infant, setInfant}) {
   const [showGuest, setShowGuest] = useState(false);

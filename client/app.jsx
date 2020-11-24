@@ -3,10 +3,10 @@
 const {React} = window;
 const {useState, useEffect} = React;
 const {styled} = global;
-import DateGuestSelect from './components/DateGuestSelect.jsx';
+import DateGuestSelect from './components/dateGuestSelect.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/App.styles.js';
+import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);

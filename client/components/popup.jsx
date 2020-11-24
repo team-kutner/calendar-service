@@ -3,9 +3,9 @@
 const {React} = window;
 const {useEffect, useState} = React;
 const {styled} = global;
-import Calendar from './Calendar.jsx';
+import Calendar from './calendar.jsx';
 
-import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/Popup.styles.js';
+import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/popup.styles.js';
 
 function Popup({invalid, setInvalid, change, setChangeAppView, close, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked, month, setCurrMonth, next, setNextMonth}) {
 

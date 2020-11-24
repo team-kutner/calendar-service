@@ -1,6 +1,6 @@
 import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
-import Calendar from '../components/Calendar';
+import Calendar from '../components/calendar';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
