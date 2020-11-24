@@ -1,11 +1,14 @@
 // import React, { useState, useEffect, Component } from 'react';
 // import styled, { css } from 'styled-components';
 const {React} = window;
+const {useEffect, useState} = React;
 const {styled} = global;
 import Calendar from './Calendar.jsx';
+
 import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/Popup.styles.js';
 
-function Popup({invalid, setInvalid, change, setChange, close, click, setClick, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked}) {
+function Popup({invalid, setInvalid, change, setChangeAppView, close, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked, month, setCurrMonth, next, setNextMonth}) {
+
   return (
 
     <Modal>
@@ -23,14 +26,14 @@ function Popup({invalid, setInvalid, change, setChange, close, click, setClick, 
         </CheckoutInput>
       </Dates>
 
-      <Calendar invalid={invalid} setInvalid={setInvalid} setChange={setChange} close={close} click={click} setClick={setClick} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} />
+      <Calendar month={month} setCurrMonth={setCurrMonth} next={next} setNextMonth={setNextMonth} invalid={invalid} setInvalid={setInvalid} setChangeAppView={setChangeAppView} close={close} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} />
 
       <Footer>
         <Clear onClick={() => {
           setCheckIn('Add date');
           setCheckOut('Add date');
-          setClick(1);
-          setChange(false);
+          setChangeAppView(false);
+          setInvalid([]);
           }}> Clear dates </Clear>
         <Close onClick={close}>Close</Close>
       </Footer>

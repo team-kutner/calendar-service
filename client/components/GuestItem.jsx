@@ -1,6 +1,6 @@
 const {React} = window;
 const {styled} = global;
-import {GuestExpand, GuestType, GuestNote, GuestNote12, Close, Button, ButtonContainer, Span} from './styles/guestDetail.styles.js';
+import {GuestExpand, GuestType, GuestNote, GuestNote12, Close, Button, ButtonContainer, Span} from './styles/GuestPopup.styles.js';
 
 const GuestItem = ({typeStyle, buttonStyle, button1, button2, invalid1, invalid2, guest }) => {
   let typeContent;

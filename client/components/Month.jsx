@@ -13,7 +13,6 @@ const Month = ({checkIn, checkOut, month, booked, invalid, Span, next }) => {
   let currMonth = parseInt(formatMonth.slice(4, 6));
   let start = month.startOf('month').day();
 
-
   return (
     <Span>
       {DAYSWEEK.map(day => {return (<Day>{day}</Day>)})}
@@ -25,7 +24,7 @@ const Month = ({checkIn, checkOut, month, booked, invalid, Span, next }) => {
           let selected = moment().set({'year': year, 'month': currMonth-1, 'date': day}).format('MM/DD/YYYY');
           if (booked.includes(hidden) || // greys out booked dates from DB
              (day < formatToday && !next) || // greys out all days before today's date
-             (invalid && invalid.includes(selected)) // greys out dates inbetween todays date and checkin date
+             (invalid.includes(selected)) // greys out dates inbetween today's date and checkin date
            ) {
             return (<BookedDay key={hidden}>{day > 0 ? day : ''}</BookedDay>)
           } else {

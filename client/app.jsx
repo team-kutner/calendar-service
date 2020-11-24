@@ -19,7 +19,7 @@ function App() {
   const [checkOut, setCheckOut] = useState('Add date');
   const [booked, setBooked] = useState([]);
   const [nights, setNights] = useState(0);
-  const [change, setChange] = useState(false);
+  const [changeAppView, setChangeAppView] = useState(false);
 
   useEffect(() => {
     let url = (window.location.href).split('/');
@@ -61,7 +61,7 @@ function App() {
 
   return (
     <>
-    { (!change || (checkIn === checkOut)) && (
+    { (!changeAppView || (checkIn === checkOut)) && (
       <Container1>
         <Price>
           <TwentyTwo><b>${price}</b></TwentyTwo>
@@ -70,12 +70,12 @@ function App() {
         <Rating>
           <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
-        <DateGuestSelect setChange={setChange} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
+        <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
         <Button className='mouse-cursor'>Check availability</Button>
       </Container1>
     )}
 
-    { (change && (checkIn !== checkOut)) && (
+    { (changeAppView && (checkIn !== checkOut)) && (
       <ReserveContainer>
 
         <Price>
@@ -87,7 +87,7 @@ function App() {
           <span className="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
 
-        <DateGuestSelect setChange={setChange} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
+        <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
 
         <Button className='mouse-cursor'>Reserve</Button>
         <TextNote>You won't be charged yet</TextNote>
