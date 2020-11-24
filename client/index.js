@@ -2,7 +2,7 @@
 // import ReactDOM from 'react-dom';
 const {React} = window
 const {ReactDOM} = window
-import App from './App.jsx';
+import App from './app.jsx';
 
 ReactDOM.render(<App />, document.getElementById('booking'));
 
