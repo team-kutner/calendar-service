@@ -1,33 +1,31 @@
 // import React, { useState, useEffect } from 'react';
 // import styled, { css } from 'styled-components';
 const {React} = window;
-const {useState, useEffect} = React;
 const {styled} = global;
 import moment from 'moment';
 import Month from './month.jsx';
 import {Frame, Header, Button, Button2, NoButton, Body, Day, Div, Div2, Span, Span2} from './styles/calendar.styles.js';
 
 function Calendar({
-  setCheckIn, setCheckOut, close, booked, invalid, setInvalid, setChangeAppView, checkOut, checkIn, month, setCurrMonth, next, setNextMonth
+  prevButtonValid, setPrevButtonValid, setCheckIn, setCheckOut, close, booked, invalid, setInvalid, setChangeAppView, checkOut, checkIn, month, setCurrMonth, next, setNextMonth
 }) {
-  // let today = moment();
-  // let nextM = moment().add(1, 'months');
-  // const [month, setCurrMonth] = useState(today);
-  // const [next, setNextMonth] = useState(nextM);
-  const [prevButtonValid, setPrevButtonValid] = useState(0); // prevButtonValid for previous button?
 
   const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   const goBackOneMonth = () => {
-    setCurrMonth(month.clone().subtract(1, 'months'));
-    setNextMonth(next.clone().subtract(1, 'months'));
-    setPrevButtonValid(prevButtonValid - 1);
+    // if the actual month is equal to the current month, then set the prevbuttonvalid to false
+    if (month.format('MM') === moment().format('MM')) {
+      setPrevButtonValid(false);
+    } else {
+      setCurrMonth(month.clone().subtract(1, 'months'));
+      setNextMonth(next.clone().subtract(1, 'months'));
+    }
   }
 
   const goForwardOneMonth = () => {
     setCurrMonth(month.clone().add(1, 'months'));
     setNextMonth(next.clone().add(1, 'months'));
-    setPrevButtonValid(prevButtonValid + 1);
+    setPrevButtonValid(true);
   }
 
   const selectDate = (e) => {
@@ -57,8 +55,8 @@ function Calendar({
   return (
     <Frame onClick={selectDate} id='frame'>
       <Header>
-        {prevButtonValid > 0 && (<Button id='prev' onClick={goBackOneMonth}>{`\u003c`}</Button>)}
-        {prevButtonValid === 0 && (<NoButton>{`\u003c`}</NoButton>)}
+        {prevButtonValid && (<Button id='prev' onClick={goBackOneMonth}>{`\u003c`}</Button>)}
+        {prevButtonValid === false && (<NoButton>{`\u003c`}</NoButton>)}
         <Div>{MONTHS[currMonth - 1]} {year}</Div>
         <Div2>{MONTHS[nextMonth - 1]} {nextYear}</Div2>
         <Button2 id='next' onClick={goForwardOneMonth}>{`\u003e`}</Button2>

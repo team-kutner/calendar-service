@@ -40,11 +40,7 @@ justify-self: start;
     background: #F5F5F5;
     border-radius: 50%;
   }
-&:active {
-  /* animation-name: slideout;
-  animation-duration: 1s; */
-  background: black;
-}
+
 `;
 
 // @keyframes slideout {
@@ -104,8 +100,6 @@ export const AvailableDay = styled(Day)`
     background: black;
     border-radius: 50%;
   `}
-
-
 `;
 
 export const BookedDay = styled(Day)`

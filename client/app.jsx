@@ -2,11 +2,11 @@
 // import styled, { css } from 'styled-components';
 const {React} = window;
 const {useState, useEffect} = React;
-const {styled} = global;
+const {styled} = window;
 import DateGuestSelect from './components/dateGuestSelect.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Container1, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
+import {Wrapper, Container, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -58,11 +58,12 @@ function App() {
   let cost = price * nights;
   let taxes = cost * 0.18;
   let total = (cost + clean + service + taxes).toFixed(2);
+  let buttonText = !changeAppView ? 'Check Availability' : 'Reserve';
 
   return (
     <>
-    { (!changeAppView || (checkIn === checkOut)) && (
-      <Container1>
+  <Wrapper>
+      <Container>
         <Price>
           <TwentyTwo><b>${price}</b></TwentyTwo>
           <Sixteen> /</Sixteen> night
@@ -71,25 +72,11 @@ function App() {
           <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
         </Rating>
         <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
-        <Button className='mouse-cursor'>Check availability</Button>
-      </Container1>
-    )}
+        <Button className='mouse-cursor'>{buttonText}</Button>
+      </Container>
 
     { (changeAppView && (checkIn !== checkOut)) && (
       <ReserveContainer>
-
-        <Price>
-          <TwentyTwo><b>${price}</b></TwentyTwo>
-          <Sixteen> /</Sixteen> night
-        </Price>
-
-        <Rating>
-          <span className="red-star">{`\u2605`}</span> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
-        </Rating>
-
-        <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
-
-        <Button className='mouse-cursor'>Reserve</Button>
         <TextNote>You won't be charged yet</TextNote>
         <FeeNight>${price} x {nights} nights</FeeNight>
         <CostNight>${price * nights}</CostNight>
@@ -104,8 +91,39 @@ function App() {
         <CostTotal>${total}</CostTotal>
       </ReserveContainer>
     )}
+  </Wrapper>
     </>
   );
 }
 
 export default App;
+
+
+// { (changeAppView && (checkIn !== checkOut)) && (
+//   <ReserveContainer>
+
+//     <Price>
+//       <TwentyTwo><b>${price}</b></TwentyTwo>
+//       <Sixteen> /</Sixteen> night
+//     </Price>
+
+//     <Rating>
+//       <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
+//     </Rating>
+
+//     <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
+
+//     <Button className='mouse-cursor'>Reserve</Button>
+//     <TextNote>You won't be charged yet</TextNote>
+//     <FeeNight>${price} x {nights} nights</FeeNight>
+//     <CostNight>${price * nights}</CostNight>
+//     <FeeClean>Cleaning fee</FeeClean>
+//     <CostClean>${clean}</CostClean>
+//     <FeeService>Service fee</FeeService>
+//     <CostService>${service}</CostService>
+//     <FeeTax>Occupancy taxes and fees</FeeTax>
+//     <CostTax>${((price*nights)*0.18).toFixed(2)}</CostTax>
+//     <Line></Line>
+//     <FeeTotal>Total</FeeTotal>
+//     <CostTotal>${total}</CostTotal>
+//   </ReserveContainer>

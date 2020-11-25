@@ -2,7 +2,14 @@
 const {styled} = global;
 const {css} = styled;
 
-export const Container1 = styled.div`
+export const Wrapper = styled.div`
+position: relative;
+width: 372px;
+float: right;
+margin-right: 50px;
+`;
+
+export const Container = styled.div`
 display: grid;
 box-sizing: border-box;
 grid-template-columns: 1fr 1fr;
@@ -12,9 +19,9 @@ grid-template-areas:  "price rating"
                       "button button";
 grid-row-gap: 10px;
 height: 276px;
-width: 100%;
-max-width: 372px;
-position: relative;
+width: 372px;
+/* max-width: 372px; */
+/* position: relative; */
 border-radius: 15px;
 border: 1px solid #D3D3D3;
 box-shadow: 0 0 20px #DCDCDC;
@@ -23,20 +30,22 @@ margin-left: auto;
 margin-right: 50px;
 `;
 
-export const ReserveContainer = styled(Container1)`
-grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 4fr 2fr repeat(1fr, 6) 2fr;
-grid-template-areas:  "price rating"
-                      "calendar calendar"
-                      "button button"
-                      "note note"
-                      "night night"
-                      "clean clean"
-                      "service service"
-                      "tax tax"
-                      "line line"
-                      "total total";
-height: 511px;
+export const ReserveContainer = styled(Container)`
+grid-template-columns: 1fr;
+grid-template-rows: repeat(1fr, 7);
+grid-template-areas:
+                      "note"
+                      "night"
+                      "clean "
+                      "service "
+                      "tax"
+                      "line"
+                      "total";
+height: 235px;
+position: absolute;
+top: 100%;
+left: 0;
+padding-top: 0;
 `;
 
 export const Price = styled.div`

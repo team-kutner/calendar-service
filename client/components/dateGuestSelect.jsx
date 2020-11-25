@@ -19,6 +19,7 @@ function DateGuestSelect({maxGuests, checkIn, checkOut, setChangeAppView, setChe
   let nextM = moment().add(1, 'months');
   const [month, setCurrMonth] = useState(today);
   const [next, setNextMonth] = useState(nextM);
+  const [prevButtonValid, setPrevButtonValid] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -27,7 +28,6 @@ function DateGuestSelect({maxGuests, checkIn, checkOut, setChangeAppView, setChe
 
   let enumerateDays = (start, end) => {
     let invalid = [];
-    // this is a temporary solution to incorrect day rendering in the Month component
     start = start.startOf('month');
     end = moment(end, 'MM/DD/YYYY');
     while(start.format('MM/DD/YYYY') !== end.format('MM/DD/YYYY')) {
@@ -41,6 +41,12 @@ function DateGuestSelect({maxGuests, checkIn, checkOut, setChangeAppView, setChe
     if (checkIn !== 'Add date') {
       let invalidDates = enumerateDays(today, checkIn);
       setInvalid(invalidDates);
+      console.log('invalid: ', invalidDates)
+    }
+  }, [checkIn])
+
+  useEffect(() => {
+    if (checkOut !== 'Add date') {
       let currMonth = moment(checkIn);
       let nextMonth = moment(checkIn).add(1, 'months');
       console.log('currMonth: ', currMonth)
@@ -48,7 +54,10 @@ function DateGuestSelect({maxGuests, checkIn, checkOut, setChangeAppView, setChe
       setCurrMonth(currMonth);
       setNextMonth(nextMonth);
     }
-  }, [checkIn])
+    if (moment(checkIn).format('MM') !== moment().format('MM')) {
+      setPrevButtonValid(true);
+    }
+  }, [checkOut])
 
 
   return (
@@ -60,7 +69,7 @@ function DateGuestSelect({maxGuests, checkIn, checkOut, setChangeAppView, setChe
         <Div>{checkOut}</Div>
       </Checkout></>) }
 
-      { show && (<Popup month={month} setCurrMonth={setCurrMonth} next={next} setNextMonth={setNextMonth} invalid={invalid} setInvalid={setInvalid} setChangeAppView={setChangeAppView} close={handleClose} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked}/>)}
+      { show && (<Popup prevButtonValid={prevButtonValid} setPrevButtonValid={setPrevButtonValid} month={month} setCurrMonth={setCurrMonth} next={next} setNextMonth={setNextMonth} invalid={invalid} setInvalid={setInvalid} setChangeAppView={setChangeAppView} close={handleClose} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked}/>)}
 
       <GuestSelect maxGuests={maxGuests} adult={adult} setAdult={setAdult} child={child} setChild={setChild} infant={infant} setInfant={setInfant}/>
     </CalendarContainer>

@@ -1,13 +1,12 @@
 // import React, { useState, useEffect, Component } from 'react';
 // import styled, { css } from 'styled-components';
 const {React} = window;
-const {useEffect, useState} = React;
 const {styled} = global;
 import Calendar from './calendar.jsx';
 
 import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, Footer, Label, Label2, Checkout, Input} from './styles/popup.styles.js';
 
-function Popup({invalid, setInvalid, change, setChangeAppView, close, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked, month, setCurrMonth, next, setNextMonth}) {
+function Popup({prevButtonValid, setPrevButtonValid, invalid, setInvalid, change, setChangeAppView, close, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked, month, setCurrMonth, next, setNextMonth}) {
 
   return (
 
@@ -26,7 +25,7 @@ function Popup({invalid, setInvalid, change, setChangeAppView, close, checkIn, c
         </CheckoutInput>
       </Dates>
 
-      <Calendar month={month} setCurrMonth={setCurrMonth} next={next} setNextMonth={setNextMonth} invalid={invalid} setInvalid={setInvalid} setChangeAppView={setChangeAppView} close={close} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} />
+      <Calendar prevButtonValid={prevButtonValid} setPrevButtonValid={setPrevButtonValid} month={month} setCurrMonth={setCurrMonth} next={next} setNextMonth={setNextMonth} invalid={invalid} setInvalid={setInvalid} setChangeAppView={setChangeAppView} close={close} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} />
 
       <Footer>
         <Clear onClick={() => {

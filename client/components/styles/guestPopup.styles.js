@@ -4,7 +4,7 @@ const {css} = styled;
 
 export const GuestExpand = styled.div`
 height: 320px;
-width: 90%;
+width: 100%;
 display: grid;
 border-radius: 15px;
 grid-template-columns: 1fr 1fr;
@@ -18,7 +18,7 @@ background: white;
 position: absolute;
 z-index: 10;
 top: 100%;
-right: -1.5%;
+/* right: -1.5%; */
 box-shadow: 0 0 20px #DCDCDC;
 padding: 10px 20px;
 `;
