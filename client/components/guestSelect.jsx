@@ -13,7 +13,7 @@ function GuestSelect({maxGuests, adult, setAdult, child, setChild, infant, setIn
     setShowGuest(!showGuest);
   };
 
-  const arrowDirection = showGuest ? `\u02c5` : `\u02c4`;
+  const arrowDirection = showGuest ? `\u02c4` : `\u02c5`;
   const infantDisplay = infant === 1 ? 'infant' : 'infants';
   const guestDisplay = adult + child < 2 ? 'guest' : 'guests'
 

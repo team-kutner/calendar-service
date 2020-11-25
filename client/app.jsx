@@ -62,8 +62,8 @@ function App() {
 
   return (
     <>
-  <Wrapper>
-      <Container>
+    <Wrapper expand={changeAppView}>
+      <Container expand={changeAppView}>
         <Price>
           <TwentyTwo><b>${price}</b></TwentyTwo>
           <Sixteen> /</Sixteen> night
@@ -91,39 +91,9 @@ function App() {
         <CostTotal>${total}</CostTotal>
       </ReserveContainer>
     )}
-  </Wrapper>
+    </Wrapper>
     </>
   );
 }
 
 export default App;
-
-
-// { (changeAppView && (checkIn !== checkOut)) && (
-//   <ReserveContainer>
-
-//     <Price>
-//       <TwentyTwo><b>${price}</b></TwentyTwo>
-//       <Sixteen> /</Sixteen> night
-//     </Price>
-
-//     <Rating>
-//       <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
-//     </Rating>
-
-//     <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
-
-//     <Button className='mouse-cursor'>Reserve</Button>
-//     <TextNote>You won't be charged yet</TextNote>
-//     <FeeNight>${price} x {nights} nights</FeeNight>
-//     <CostNight>${price * nights}</CostNight>
-//     <FeeClean>Cleaning fee</FeeClean>
-//     <CostClean>${clean}</CostClean>
-//     <FeeService>Service fee</FeeService>
-//     <CostService>${service}</CostService>
-//     <FeeTax>Occupancy taxes and fees</FeeTax>
-//     <CostTax>${((price*nights)*0.18).toFixed(2)}</CostTax>
-//     <Line></Line>
-//     <FeeTotal>Total</FeeTotal>
-//     <CostTotal>${total}</CostTotal>
-//   </ReserveContainer>

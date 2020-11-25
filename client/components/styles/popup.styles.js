@@ -48,7 +48,7 @@ grid-template-areas: "label2"
 border: 1px solid #717171;
 border-radius: 10px;
 font-size: 12px;
-background: #F5F5F5;
+background: ${props => props.change ? 'white' : '#F5F5F5'};
 padding-left: 5px;
 `;
 
@@ -108,15 +108,16 @@ grid-area: label;
 font-size: 10px;
 align-self: end;
 font-weight: 900;
+color: black;
 `;
 
 export const Label2 = styled(Label)`
 grid-area: label2;
-color: #D3D3D3;
+color: ${props => props.change ? 'black' : '#D3D3D3'};
 `;
 
 export const Checkout = styled.div`
-color: #D3D3D3;
+color: ${props => props.change ? '#717171' : '#D3D3D3'};
 font-size: 14px;
 grid-area: input2;
 align-self: start;

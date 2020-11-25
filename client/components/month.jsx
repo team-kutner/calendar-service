@@ -25,7 +25,7 @@ const Month = ({checkIn, checkOut, month, booked, invalid, Span, next }) => {
           let hidden = moment().set({'year': year, 'month': currMonth-1, 'date': day}).format('YYYY-MM-DD');
           let selected = moment().set({'year': year, 'month': currMonth-1, 'date': day}).format('MM/DD/YYYY');
           if (booked.includes(hidden) || // greys out booked dates from DB
-             (day < actualDay && actualMonth === currMonth) || // month is this month
+             (day < actualDay && actualMonth === currMonth) ||
              // greys out all days before today's date
              (invalid.includes(selected)) // greys out dates inbetween today's date and checkin date
            ) {

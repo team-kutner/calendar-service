@@ -7,6 +7,7 @@ position: relative;
 width: 372px;
 float: right;
 margin-right: 50px;
+/* box-shadow: ${props => props.expand ? '0 0 20px #DCDCDC' : 'none'}; */
 `;
 
 export const Container = styled.div`
@@ -22,9 +23,14 @@ height: 276px;
 width: 372px;
 /* max-width: 372px; */
 /* position: relative; */
-border-radius: 15px;
+${props => props.hover ? 'pointer' : 'auto'};
+border-top-left-radius: 15px;
+border-top-right-radius: 15px;
+border-bottom-right-radius: ${props => props.expand ? '0px' : '15px'};
+border-bottom-left-radius: ${props => props.expand ? '0px' : '15px'};
 border: 1px solid #D3D3D3;
-box-shadow: 0 0 20px #DCDCDC;
+border-bottom: ${props => props.expand ? 'none' : '1px solid #D3D3D3'};
+/* box-shadow: ${props => props.expand ? 'none': '0 0 20px #DCDCDC'}; */
 padding: 24px;
 margin-left: auto;
 margin-right: 50px;
@@ -43,9 +49,16 @@ grid-template-areas:
                       "total";
 height: 235px;
 position: absolute;
-top: 100%;
+top: 95%;
 left: 0;
+border-top: none;
 padding-top: 0;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+/* box-shadow: 0 10 20px #DCDCDC; */
+
 `;
 
 export const Price = styled.div`

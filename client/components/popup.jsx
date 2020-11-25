@@ -8,6 +8,8 @@ import {Modal, CheckinInput, CheckoutInput, Header, Notes, Close, Clear, Dates, 
 
 function Popup({prevButtonValid, setPrevButtonValid, invalid, setInvalid, change, setChangeAppView, close, checkIn, checkOut, setCheckIn, setCheckOut, booked, setBooked, month, setCurrMonth, next, setNextMonth}) {
 
+  let changeConditional = (checkIn !== 'Add date' || checkOut !== 'Add date');
+
   return (
 
     <Modal>
@@ -20,8 +22,8 @@ function Popup({prevButtonValid, setPrevButtonValid, invalid, setInvalid, change
           <Input className='form' maxlength='10' placeholder={checkIn} type='text'></Input>
 
         </CheckinInput>
-        <CheckoutInput><Label2>CHECK-OUT</Label2>
-          <Checkout id='checkout'>{checkOut}</Checkout>
+        <CheckoutInput change={changeConditional}><Label2 change={changeConditional}>CHECK-OUT</Label2>
+          <Checkout change={changeConditional} id='checkout'>{checkOut}</Checkout>
         </CheckoutInput>
       </Dates>
 
