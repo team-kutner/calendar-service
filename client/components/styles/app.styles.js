@@ -178,3 +178,10 @@ width: 100%;
 grid-area: line;
 align-self: center;
 `;
+
+export const InfoContainer = styled.img`
+box-sizing: border-box;
+max-width: 700px;
+width: 100%;
+height: auto;
+`;

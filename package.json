@@ -22,6 +22,7 @@
     "classnames": "^2.2.6",
     "express": "^4.17.1",
     "faker": "^5.1.0",
+    "file-loader": "^6.2.0",
     "keyframe": "^2.1.0",
     "moment": "^2.29.1",
     "moment-random": "^1.1.0",
