@@ -3,8 +3,10 @@ const {styled} = global;
 const {css} = styled;
 
 export const GuestExpand = styled.div`
+box-sizing: border-box;
 height: 320px;
 width: 100%;
+max-width: 322px;
 display: grid;
 border-radius: 15px;
 grid-template-columns: 1fr 1fr;

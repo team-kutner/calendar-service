@@ -42,8 +42,8 @@ grid-template-rows: repeat(1fr, 7);
 grid-template-areas:
                       "note"
                       "night"
-                      "clean "
-                      "service "
+                      "clean"
+                      "service"
                       "tax"
                       "line"
                       "total";
@@ -109,11 +109,13 @@ font-size: 16px;
 text-decoration: underline;
 justify-self: start;
 cursor: pointer;
+box-sizing: border-box;
 `;
 
 export const Cost = styled(Text)`
 font-size: 16px;
 justify-self: end;
+box-sizing: border-box;
 `;
 
 export const TextNote = styled(Text)`

@@ -4,9 +4,10 @@ const {React} = window;
 const {useState, useEffect} = React;
 const {styled} = window;
 import DateGuestSelect from './components/dateGuestSelect.jsx';
+import ReserveInfo from './components/reserveInfo.jsx';
 import axios from 'axios';
 import moment from 'moment';
-import {Wrapper, Container, ReserveContainer, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, TextNote, FeeNight, CostNight, FeeClean, CostClean, FeeService, CostService, FeeTax, CostTax, FeeTotal, CostTotal, Line, Star} from './components/styles/app.styles.js';
+import {Wrapper, Container, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, Star} from './components/styles/app.styles.js';
 
 function App() {
   const [price, setPrice] = useState(0);
@@ -55,9 +56,7 @@ function App() {
     }
   }, [checkOut]);
 
-  let cost = price * nights;
-  let taxes = cost * 0.18;
-  let total = (cost + clean + service + taxes).toFixed(2);
+
   let buttonText = !changeAppView ? 'Check Availability' : 'Reserve';
 
   return (
@@ -75,22 +74,9 @@ function App() {
         <Button className='mouse-cursor'>{buttonText}</Button>
       </Container>
 
-    { (changeAppView && (checkIn !== checkOut)) && (
-      <ReserveContainer>
-        <TextNote>You won't be charged yet</TextNote>
-        <FeeNight>${price} x {nights} nights</FeeNight>
-        <CostNight>${price * nights}</CostNight>
-        <FeeClean>Cleaning fee</FeeClean>
-        <CostClean>${clean}</CostClean>
-        <FeeService>Service fee</FeeService>
-        <CostService>${service}</CostService>
-        <FeeTax>Occupancy taxes and fees</FeeTax>
-        <CostTax>${((price*nights)*0.18).toFixed(2)}</CostTax>
-        <Line></Line>
-        <FeeTotal>Total</FeeTotal>
-        <CostTotal>${total}</CostTotal>
-      </ReserveContainer>
-    )}
+      { (changeAppView && (checkIn !== checkOut)) && (
+        <ReserveInfo price={price} nights={nights} clean={clean} service={service}/>
+      )}
     </Wrapper>
     </>
   );
