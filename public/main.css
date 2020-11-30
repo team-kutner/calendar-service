@@ -1,9 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-/*
-*:focus {
-  outline: none;
-} */
+
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -13,4 +10,10 @@ body {
 
 .red-star {
   color: #ff385c;
+}
+
+#wrapper {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

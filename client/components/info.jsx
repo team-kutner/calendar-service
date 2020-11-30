@@ -7,7 +7,7 @@ import { InfoContainer} from './styles/app.styles.js';
 const Info = () => {
 
   return (
-    <InfoContainer src={extraInfo} />
+    <InfoContainer width='700px' height='780px' src={extraInfo} alt='Booking Details'/>
   )
 }
 
