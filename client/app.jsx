@@ -9,7 +9,7 @@ import axios from 'axios';
 import moment from 'moment';
 import {Wrapper, Container, Price, Rating, Button, Text, Fee, Cost, TwentyTwo, Sixteen, Star} from './components/styles/app.styles.js';
 
-function App() {
+var App = () => {
   const [price, setPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [reviews, setReviews] = useState(0);
@@ -27,31 +27,31 @@ function App() {
     let homeId = url[url.length-1] || '75';
 
     axios.get(`/api/homes/${homeId}/reservation`)
-    .then((res) => {
-      let data = res.data[0];
-      setGuests(data.guestMax);
-      setPrice(data.pricePerNight);
-      setRating(data.rating);
-      setReviews(data.numRatings);
-      setClean(data.cleaningFee);
-      setService(data.serviceFee);
-    })
-    .catch(err => console.log(err));
+      .then((res) => {
+        let data = res.data[0];
+        setGuests(data.guestMax);
+        setPrice(data.pricePerNight);
+        setRating(data.rating);
+        setReviews(data.numRatings);
+        setClean(data.cleaningFee);
+        setService(data.serviceFee);
+      })
+      .catch(err => console.log(err));
 
     axios.get(`/api/homes/${homeId}/listing`)
-    .then((res) => {
-      setBooked(res.data)
-    })
-    .catch(err => console.log(err));
+      .then((res) => {
+        setBooked(res.data);
+      })
+      .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
     if (checkOut.length === 10) {
-      console.log('checkout: ', checkOut)
+      console.log('checkout: ', checkOut);
       let date1 = new Date(checkIn);
       let date2 = new Date(checkOut);
-      let diffTime = Math.abs(date2-date1);
-      let diffDays = Math.ceil(diffTime / (1000*60*60*24));
+      let diffTime = Math.abs(date2 - date1);
+      let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       setNights(diffDays);
     }
   }, [checkOut]);
@@ -61,25 +61,25 @@ function App() {
 
   return (
     <>
-    <Wrapper expand={changeAppView}>
-      <Container expand={changeAppView}>
-        <Price>
-          <TwentyTwo><b>${price}</b></TwentyTwo>
-          <Sixteen> /</Sixteen> night
-        </Price>
-        <Rating>
-          <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
-        </Rating>
-        <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
-        <Button className='mouse-cursor'>{buttonText}</Button>
-      </Container>
+      <Wrapper expand={changeAppView}>
+        <Container expand={changeAppView}>
+          <Price>
+            <TwentyTwo><b>${price}</b></TwentyTwo>
+            <Sixteen> /</Sixteen> night
+          </Price>
+          <Rating>
+            <Star className="red-star">{`\u2605`}</Star> <b>{rating}</b> <span style={{'color': 'grey'}}>({reviews})</span>
+          </Rating>
+          <DateGuestSelect setChangeAppView={setChangeAppView} checkIn={checkIn} checkOut={checkOut} setCheckIn={setCheckIn} setCheckOut={setCheckOut} booked={booked} maxGuests={maxGuests}/>
+          <Button className='mouse-cursor'>{buttonText}</Button>
+        </Container>
 
-      { (changeAppView && (checkIn !== checkOut)) && (
-        <ReserveInfo price={price} nights={nights} clean={clean} service={service}/>
-      )}
-    </Wrapper>
+        { (changeAppView && (checkIn !== checkOut)) && (
+          <ReserveInfo price={price} nights={nights} clean={clean} service={service}/>
+        )}
+      </Wrapper>
     </>
   );
-}
+};
 
 export default App;

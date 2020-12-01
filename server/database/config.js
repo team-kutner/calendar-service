@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 const faker = require('faker');
 const moment = require('moment');
 
