@@ -38,7 +38,7 @@ Delete a listing | DELETE | /api/homes/:id/listing
 
 ### Reservations
 Action | Method | URL
-_______|________|____
+-------|--------|----
 Create a reservation | POST | /api/homes/create/reservation
 Get listing details for a reservation | GET | /api/homes/:id/reservation
 Update a reservation | PUT | /api/homes/:id/:column/reservation
