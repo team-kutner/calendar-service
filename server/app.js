@@ -14,10 +14,11 @@ app.use(router);
 app.get('/listing/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
-app.get('/', (req, res) => {
-  res.sendStatus(200);
-  res.send('Hello World!');
-  res.end();
-});
+
+// app.get('/', (req, res) => {
+//   res.sendStatus(200);
+//   res.send('Hello World!');
+//   res.end();
+// });
 
 module.exports = app;

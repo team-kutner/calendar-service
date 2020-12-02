@@ -20,6 +20,13 @@ module.exports = {
       res.sendStatus(200);
       res.end();
     });
+  },
+
+  update: (req, res) => {
+
+  },
+
+  delete: (req, res) => {
 
   }
 };
