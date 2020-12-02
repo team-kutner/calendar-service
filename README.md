@@ -30,7 +30,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 # API
 ### Listings
 Action | Method | URL
-_______|________|____
+-------|--------|----
 Create a listing | POST | /api/homes/create/listing
 Get a booked dates for a listing | GET | /api/homes/:id/listing
 Update a listing | PUT | /api/homes/:id/:column/listing
