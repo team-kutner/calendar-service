@@ -31,5 +31,38 @@ module.exports = {
         callback(results);
       }
     });
+  },
+  createListing: (listing, callback) => {
+    let query = 'INSERT INTO listings (name, description, guestMax, pricePerNight, cleaningFee, serviceFee, rating, numRatings) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.db.query(query, listing, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('Listing added');
+        callback(null, result);
+      }
+    });
+  },
+  updateListing: (id, val, column, callback) => {
+    let query = `UPDATE listings SET ${column} = ${val} WHERE listingID = ${id}`;
+    db.db.query(query, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('listing updated');
+        callback(null, result);
+      }
+    });
+  },
+  deleteListing: (id, callback) => {
+    let query = `DELETE FROM listings WHERE listingID = ${id}`;
+    db.db.query(query, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('listing deleted');
+        callback(null, result);
+      }
+    })
   }
 };

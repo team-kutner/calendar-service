@@ -3,9 +3,10 @@ const db = require('./config.js');
 const moment = require('moment');
 const momentRandom = require('moment-random');
 
-function seed() {
+var seed = () => {
   var executed = false;
 
+  // 100 primary listings
   const desiredListings = 100;
   for (let i = 0; i < desiredListings; i++) {
     let newListing = [
@@ -25,6 +26,8 @@ function seed() {
       }
     });
   }
+
+  // 1000 reservations (secondary listings) that point to a specific listing, making those dates unavailable this is how you track unavailable dates.
   const desiredRes = 1000;
 
   for (let i = 0; i < desiredRes; i++) {
@@ -48,7 +51,7 @@ function seed() {
       }
     });
   }
-};
+}
 
 seed();
 
