@@ -17,11 +17,36 @@ module.exports = {
 
     let query = 'INSERT INTO reservations (listingID, checkIn, checkOut, adults, children, infants, totalPrice) VALUES (?, ?, ?, ?, ?, ?, ?)';
     db.db.query(query, params, (err, result) => {
-      if (err) { console.log(err); } else {
-        callback('Successfully added to reservation');
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('booking added');
+        callback(null, result);
       }
     });
+  },
 
+  updateReservation: (id, val, column, callback) => {
+    let query = `UPDATE reservations SET ${column} = ${val} where resID = ${id}`;
+    db.db.query(query, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('reservation updated');
+        callback(null, result);
+      }
+    });
+  },
 
+  deleteReservation: (id, callback) => {
+    let query = `DELETE FROM reservations WHERE resID = ${id}`;
+    db.db.query(query, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('reservation deleted');
+        callback(err, null);
+      }
+    })
   }
 };

@@ -53,5 +53,16 @@ module.exports = {
         callback(null, result);
       }
     });
+  },
+  deleteListing: (id, callback) => {
+    let query = `DELETE FROM listings WHERE listingID = ${id}`;
+    db.db.query(query, (err, result) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        console.log('listing deleted');
+        callback(null, result);
+      }
+    })
   }
 };

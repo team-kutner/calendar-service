@@ -1,23 +1,24 @@
-# Project Name
+# Aquabnb calendar service
 
-> Project description
+> This is the booking and calendar module for Aquabnb. Original project can be found here: https://github.com/teamTarly/aquabnb-booking. The goal of the current project is to scale and redesign the back-end server and database of the original project to optimize for high web traffic.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/kutner/photo_carousel-service
+  - https://github.com/kutner/more-places-stay-service
+  - https://github.com/teamTarly/aquabnb-booking
+  - https://github.com/kutner/reviews-service
 
 ## Table of Contents
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
+1. [API](#API)
 1. [Development](#development)
 
 ## Usage
 
-> Some usage instructions
+> To see how to get started with this repo see below in development.
 
 ## Requirements
 
@@ -25,6 +26,23 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 - Node 6.13.0
 - etc
+
+# API
+### Listings
+Action | Method | URL
+_______|________|____
+Create a listing | POST | /api/homes/create/listing
+Get a booked dates for a listing | GET | /api/homes/:id/listing
+Update a listing | PUT | /api/homes/:id/:column/listing
+Delete a listing | DELETE | /api/homes/:id/listing
+
+### Reservations
+Action | Method | URL
+_______|________|____
+Create a reservation | POST | /api/homes/create/reservation
+Get listing details for a reservation | GET | /api/homes/:id/reservation
+Update a reservation | PUT | /api/homes/:id/:column/reservation
+Delete a reservation | DELETE | /api/homes/:id/reservation
 
 ## Development
 

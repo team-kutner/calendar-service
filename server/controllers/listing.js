@@ -50,6 +50,16 @@ module.exports = {
   },
 
   delete: (req, res) => {
-
+    let id = req.params.id;
+    models.listing.deleteListing(id, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(404);
+        res.end();
+      } else {
+        res.status(200).send(result);
+        res.end();
+      }
+    });
   }
 };

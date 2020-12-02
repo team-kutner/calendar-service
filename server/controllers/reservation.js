@@ -15,18 +15,46 @@ module.exports = {
     let key = req.body;
     var params = [key.listingID, key.checkIn, key.checkOut, key.adults, key.children, key.infants, key.totalPrice];
 
-    models.reservation.addBookingInfo(params, (status) => {
-      console.log(status);
-      res.sendStatus(200);
-      res.end();
+    models.reservation.addBookingInfo(params, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(404);
+        res.end();
+      } else {
+        res.status(200).send(result);
+        res.end();
+      }
     });
   },
 
   update: (req, res) => {
-
+    let id = req.params.id;
+    let updateColumn = req.params.column.toUpperCase();
+    let newVal = req.body.value;
+    models.reservation.updateReservation(id, newVal, updateColumn, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(404);
+        res.end();
+      } else {
+        res.status(200).send(result);
+        res.end();
+      }
+    });
   },
 
   delete: (req, res) => {
+    let id = req.params.id;
+    models.reservation.deleteReservation(id, (err, result) => {
+      if (err) {
+        console.log(err);
+        res.status(404);
+        res.end();
+      } else {
+        res.status(200).send(result);
+        res.end();
+      }
+    })
 
   }
 };
