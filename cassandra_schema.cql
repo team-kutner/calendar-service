@@ -26,6 +26,6 @@ CREATE TABLE IF NOT EXISTS listings (
   serviceFee double,
   rating double,
   numRatings int,
-  reservations frozen <reservation>,
-  PRIMARY KEY ((listingID), reservations)
+  reservations set <frozen <reservation>>,
+  PRIMARY KEY (listingID)
 );
