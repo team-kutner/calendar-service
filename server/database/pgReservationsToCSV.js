@@ -1,13 +1,15 @@
 const faker = require('faker');
-const fs = require('fs');
 const moment = require('moment');
 const momentRandom = require('moment-random');
+const fs = require('fs');
+
+
 
 const writeReservationsPG = fs.createWriteStream('server/database/pgReservations.csv');
 writeReservationsPG.write('listingID,checkIn,checkOut,adults,children,infants,totalPrice\n');
 
 var writeToPGReservations = (writer, encoding, callback) => {
-  let i = 100;
+  let i = 10000000;
   var write = () => {
     let success = true;
     do {
@@ -20,7 +22,7 @@ var writeToPGReservations = (writer, encoding, callback) => {
       const children = faker.random.number({min: 0, max: 5});
       const infants = faker.random.number({min: 0, max: 3});
       const totalPrice = faker.finance.amount(75, 2800, 2);
-      const data = `${listingID},${checkIn},${checkOut},${adults},${children},${infants},${totalPrice}`;
+      const data = `${listingID},${checkIn},${checkOut},${adults},${children},${infants},${totalPrice}\n`;
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -38,3 +40,6 @@ writeToPGReservations(writeReservationsPG, 'utf-8', () => {
   console.log('finished');
   writeReservationsPG.end();
 });
+
+// console.time();
+// console.timeEnd();

@@ -4,7 +4,7 @@ const fs = require('fs');
 const writeListingsPG = fs.createWriteStream('server/database/pgListings.csv');
 
 
-writeListingsPG.write('id,listingID,name,description,guestMax,pricePerNight,cleaningFee,serviceFee,rating,numRatings\n');
+writeListingsPG.write('name,description,guestMax,pricePerNight,cleaningFee,serviceFee,rating,numRatings\n');
 
 
 
@@ -38,5 +38,6 @@ var writeToPGListings = (writer, encoding, callback) => {
 };
 
 writeToPGListings(writeListingsPG, 'utf-8', () => {
+  console.log('finished');
   writeListingsPG.end();
 });
