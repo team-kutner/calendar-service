@@ -63,6 +63,6 @@ module.exports = {
         console.log('listing deleted');
         callback(null, result);
       }
-    })
+    });
   }
 };

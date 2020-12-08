@@ -1,6 +1,12 @@
 ## MAC files ##
 .DS_Store
 
+# Data files
+*.csv
+
+# Config files
+/server/database/pgConfig.js
+
 ## NPM ##
 npm
 npm-debug.log
