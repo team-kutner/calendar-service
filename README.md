@@ -53,26 +53,39 @@ From within the root directory:
 ```sh
 npm install -g webpack
 npm install
+npm install nodemon
 ```
 
-Database:
-This service uses mysql.
+### Database:
+This service uses postgresql.
 
-Client:
+#### Instructions:
+Seeding DB: First install postgres and create a table called booking. Then run the postgres_schema_nofk.sql file to create two tables. Seed tables using csv scripts below and copy command in psql shell.
+
+Connecting DB: use env command below to create an env file. Add PGUSER, PGHOST, PGPASSWORD, PGDATABASE, PGPORT to env file. If you get errors with password authentication run this command from within the psql shell:
+ALTER USER postgres PASSWORD 'newPassword';
+Then add that password to your env file.
+
+### Client:
 This service uses React v. 16.
 
-Server:
+### Server:
 This service uses node express.
+Default server port is 3000. To modify add PORT to .env file.
 
-Scripts:
-npm start: Runs the server with nodemon
+### Scripts:
+npm start:dev: Runs the server with nodemon
 npm run dev: Builds webpack in developer mode with watch tag
 npm run build: Builds webpack
-npm run seed: Creates database and tables (if they don't exist) and also seeds the databse with mock data
+npm run seed:mysql Creates mysql database and tables (if they don't exist) and also seeds the databse with mock data with 100 entries
 npm test: Runs jest tests
 npm test:watch: Runs jest tests with watch tag
+npm run create-tables:pg: Creates two postgres tables (listings, reservations)
+npm run csv:pgl: Creates a csv file with 10 million records that can be added to pg listings table
+npm run csv:pgr: creates a csv file with 10 million records that can be added to pg reservations table
+npm run env: creates a .env file to define process.env variables for set up to pg server
 
-Dependencies:
+### Dependencies:
 babel
 axios
 body-parser
