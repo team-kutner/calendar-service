@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 //Connect controller methods to their corresponding routes
 
-// Read reservations
+// Read all info for a specific listing (that someone is making a reservations for)
 router.get('/api/homes/:id/reservation', controller.reservation.get);
 
 // Create reservation
@@ -15,7 +15,7 @@ router.put('/api/homes/:id/:column/reservation', controller.reservation.update);
 // Delete reservation
 router.delete('/api/homes/:id/reservation', controller.reservation.delete);
 
-// Read listings
+// Read all unavailable dates for a listing
 router.get('/api/homes/:id/listing', controller.listing.get);
 
 // Create listing

@@ -29,12 +29,12 @@ var App = () => {
     axios.get(`/api/homes/${homeId}/reservation`)
       .then((res) => {
         let data = res.data[0];
-        setGuests(data.guestMax);
-        setPrice(data.pricePerNight);
+        setGuests(data.guestmax);
+        setPrice(data.pricepernight);
         setRating(data.rating);
-        setReviews(data.numRatings);
-        setClean(data.cleaningFee);
-        setService(data.serviceFee);
+        setReviews(data.numratings);
+        setClean(data.cleaningfee);
+        setService(data.servicefee);
       })
       .catch(err => console.log(err));
 
