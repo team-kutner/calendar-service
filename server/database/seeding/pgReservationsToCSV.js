@@ -5,7 +5,7 @@ const fs = require('fs');
 
 
 
-const writeReservationsPG = fs.createWriteStream('server/database/pgReservations.csv');
+const writeReservationsPG = fs.createWriteStream('server/database/seeding/pgReservations.csv');
 writeReservationsPG.write('listingID,checkIn,checkOut,adults,children,infants,totalPrice\n');
 
 var writeToPGReservations = (writer, encoding, callback) => {
