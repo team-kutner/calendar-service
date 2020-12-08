@@ -5,10 +5,14 @@ const models = require('../models');
 module.exports = {
   get: function (req, res) {
     let id = req.params.id;
-    models.listing.getDates(id, (results) => {
-      res.json(results);
-      res.end();
-    });
+    return models.listing.getDates(id)
+      .then(results => {
+        res.json(results);
+      })
+      .catch(err => {
+        res.status(400)
+        res.end();
+      })
   },
   post: (req, res) => {
     let newListing = [
@@ -21,45 +25,45 @@ module.exports = {
       req.body.rating,
       req.body.numRatings
     ];
-    models.listing.createListing(newListing, (err, result) => {
-      if (err) {
+    return models.listing.createListing(newListing)
+      .then(result => {
+        res.status(200).send(result);
+        res.end();
+      })
+      .catch(err => {
         console.log(err);
         res.status(404);
         res.end();
-      } else {
-        res.status(200).send(result);
-        res.end();
-      }
-    });
+      })
   },
 
   update: (req, res) => {
     let id = req.params.id;
     let updateColumn = req.params.column.toUpperCase();
     let newVal = req.body.value;
-    models.listing.updateListing(id, newVal, updateColumn, (err, result) => {
-      if (err) {
+    return models.listing.updateListing(id, newVal, updateColumn)
+      .then(result => {
+        res.status(200).send(result);
+        res.end();
+      })
+      .catch(err => {
         console.log(err);
         res.status(404);
         res.end();
-      } else {
-        res.status(200).send(result);
-        res.end();
-      }
-    });
+      })
   },
 
   delete: (req, res) => {
     let id = req.params.id;
-    models.listing.deleteListing(id, (err, result) => {
-      if (err) {
+    return models.listing.deleteListing(id)
+    .then(result => {
+      res.status(200).send(result);
+      res.end();
+    })
+    .catch(err => {
         console.log(err);
         res.status(404);
         res.end();
-      } else {
-        res.status(200).send(result);
-        res.end();
-      }
-    });
-  }
+      })
+    }
 };
