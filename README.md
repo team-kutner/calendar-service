@@ -77,8 +77,8 @@ Default server port is 3000. To modify add PORT to .env file.
 npm start:dev: Runs the server with nodemon\n
 npm run dev: Builds webpack in developer mode with watch tag\n
 npm run build: Builds webpack\n
-npm run seed:mysql Creates mysql database and tables (if they don't exist) \nand also seeds the databse with mock data with 100 entries\n
-npm test: Runs jest tests
+npm run seed:mysql Creates mysql database and tables (if they don't exist) and also seeds the databse with mock data with 100 entries\n
+npm test: Runs jest tests\n
 npm test:watch: Runs jest tests with watch tag\n
 npm run create-tables:pg: Creates two postgres tables (listings, reservations)\n
 npm run csv:pgl: Creates a csv file with 10 million records that can be \nadded to pg listings table
