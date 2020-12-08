@@ -29,6 +29,7 @@ var App = () => {
     axios.get(`/api/homes/${homeId}/reservation`)
       .then((res) => {
         let data = res.data[0];
+        console.log(data)
         setGuests(data.guestmax);
         setPrice(data.pricepernight);
         setRating(data.rating);
