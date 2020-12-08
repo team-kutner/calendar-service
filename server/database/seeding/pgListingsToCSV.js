@@ -1,7 +1,7 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeListingsPG = fs.createWriteStream('server/database/pgListings.csv');
+const writeListingsPG = fs.createWriteStream('server/database/seeding/pgListings.csv');
 
 
 writeListingsPG.write('name,description,guestMax,pricePerNight,cleaningFee,serviceFee,rating,numRatings\n');

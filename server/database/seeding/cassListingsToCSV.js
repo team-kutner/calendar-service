@@ -3,19 +3,20 @@ const fs = require('fs');
 const moment = require('moment');
 const momentRandom = require('moment-random');
 
-const writeListingsCass = fs.createWriteStream('server/database/cassandra.csv');
+const writeListingsCass = fs.createWriteStream('server/database/seeding/cassandra.csv');
 
 writeListingsCass.write('listingID,name,description,guestMax,pricePerNight,cleaningFee,serviceFee,rating,numRatings,reservations\n');
 
 var writeToCassListings = (writer, encoding, callback) => {
-  let i = 1000000;
-  let id = 9000000;
-  let resID = 26997016;
+  let i = 10000000;
+  let id = 0;
+  let resID = 0
   var write = () => {
     let success = true;
     do {
       i -= 1;
       id += 1;
+      resID += 1;
       const name = faker.company.catchPhraseDescriptor();
       const description = faker.lorem.sentence();
       const guestMax = faker.random.number({min: 1, max: 15});

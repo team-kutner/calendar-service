@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
-const config = require('./pgConfig.js');
 
-const pool = new Pool(config);
+
+const pool = new Pool();
 
 module.exports = pool;
 

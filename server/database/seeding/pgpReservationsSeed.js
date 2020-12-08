@@ -6,9 +6,6 @@ const pgp = require('pg-promise')({
   capSQL: true
 });
 
-
-
-
 const db = pgp(config)
 
 
@@ -21,14 +18,14 @@ const cs = new pgp.helpers.ColumnSet([
   'infants',
   'totalprice'
 ], {table: 'reservations'});
-var numOfRecords = 10;
+var numOfRecords = 100;
 
 getNextData = (t) => {
   if (numOfRecords === 0) {
     var data = null;
   } else {
     var data = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       let checkIn = momentRandom('11/25/2021', '12/25/2020').format('YYYY-MM-DD');
       let randomNum = faker.random.number({min: 1, max: 14});
       let checkOut = moment(checkIn, 'YYYY-MM-DD').add(randomNum, 'days').format('YYYY-MM-DD');
