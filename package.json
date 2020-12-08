@@ -11,8 +11,9 @@
     "dev": "webpack -d --watch",
     "build": "webpack",
     "seed:mysql": "mysql -u root -p < schema.sql && node ./server/database/seeding/seed.js",
-    "pglistingscsv": "node ./server/database/seeding/pgListingsToCSV.js",
-    "pgrescsv": "node ./server/database/seeding/ReservationsToCSV.js",
+    "create-tables:pg": "sudo -i -u postgres psql && SOURCE ./postgres_schema_nofk.sql",
+    "csv:pgl": "node ./server/database/seeding/pgListingsToCSV.js",
+    "csv:pgr": "node ./server/database/seeding/ReservationsToCSV.js",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "env": "touch .env"
