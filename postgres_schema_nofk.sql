@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS listings (
   listingID SERIAL PRIMARY KEY,
-  name TEXT,
-  description TEXT,
+  name VARCHAR(100),
+  description VARCHAR(250),
   guestMax INTEGER,
   pricePerNight INTEGER,
   cleaningFee NUMERIC(5,2),
