@@ -13,10 +13,11 @@
     "seed:mysql": "mysql -u root -p < schema.sql && node ./server/database/seeding/seed.js",
     "create-tables:pg": "sudo -i -u postgres psql SOURCE ./postgres_schema_nofk.sql",
     "csv:pgl": "node ./server/database/seeding/pgListingsToCSV.js",
-    "csv:pgr": "node ./server/database/seeding/ReservationsToCSV.js",
+    "csv:pgr": "node ./server/database/seeding/pgReservationsToCSV.js",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
-    "env": "touch .env"
+    "env": "touch .env",
+    "stress-test": "artillery run ./stress_test.yaml"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -57,6 +58,7 @@
     "enzyme-to-json": "^3.6.1",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "jest": "^26.6.3",
+    "newrelic": "^7.0.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
   },

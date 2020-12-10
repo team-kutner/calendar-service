@@ -8,6 +8,10 @@
 /server/database/pgConfig.js
 *.env
 
+# Newrelic testing
+newrelic.js
+stress_test.yaml
+
 ## NPM ##
 npm
 npm-debug.log
