@@ -1,15 +1,25 @@
 const models = require('../models');
 // const db = require('../database/config.js');
-const db = require('../database/postgresDB.js');
+const db = require('../database/postgresConfig.js');
+const redis = require('../database/redisConfig.js');
 
 module.exports = {
   getBookingInfo: function(id) {
     // need to grab all the prices, rating, and numratings
     let query = `SELECT guestMax, pricePerNight, cleaningFee, serviceFee, rating, numRatings FROM listings WHERE listingID = ${id}`;
-    return db.query(query)
-      .then(result => {
-        result = result.rows;
-        return result;
+    return redis.getAsync(`resLId${id}`)
+      .then(results => {
+        if (results === null) {
+          return db.query(query)
+          .then(result => {
+            result = result.rows;
+            console.log(result);
+            redis.setAsync(`resLId${id}`, JSON.stringify(result));
+            return result;
+          })
+        } else {
+          return JSON.parse(results);
+        }
       })
       .catch(err => {
         return err;
