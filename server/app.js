@@ -2,10 +2,14 @@ const express = require('express');
 const app = express();
 const port = 5000;
 const bodyParser = require('body-parser');
-const db = require('./database/config.js');
+const compression = require('compression');
+// const db = require('./database/config.js');
 const router = require('./routes.js');
 const path = require('path');
 
+
+
+app.use(compression());
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

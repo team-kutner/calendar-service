@@ -1,15 +1,25 @@
 // const db = require('../database/config.js');
 const helpers = require('./helpers.js');
-const db =  require('../database/postgresDB.js');
+const db =  require('../database/postgresConfig.js');
+const redis = require('../database/redisConfig.js');
 
 module.exports = {
   getDates: function(id) {
     // query the database to grab the dates and availability status
     let query = `SELECT checkIn, checkOut FROM reservations WHERE listingID = ${id}`
-    return db.query(query)
-      .then(result => {
-        var reservations = result.rows;
-        return helpers.enumerateDaysBetweenDates(reservations);
+    return redis.getAsync(`listLId${id}`)
+      .then(results => {
+        if (results === null) {
+          return db.query(query)
+          .then(result => {
+            var reservations = result.rows;
+            var dates = helpers.enumerateDaysBetweenDates(reservations);
+            redis.setAsync(`listLId${id}`, JSON.stringify(dates));
+            return dates;
+          })
+        } else {
+          return JSON.parse(results);
+        }
       })
       .catch(err => {
         console.log(err);
