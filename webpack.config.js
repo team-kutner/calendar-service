@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './client/index.js',
@@ -7,6 +8,15 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
   },
   watch: true,
+  mode: 'production',
+  plugins: [
+    new webpack.DefinePlugin({ // <-- key to reducing React's size
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.AggressiveMergingPlugin()//Merge chunks
+  ],
   module: {
     rules: [{
       loader: 'babel-loader',
