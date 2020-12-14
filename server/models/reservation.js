@@ -7,9 +7,9 @@ module.exports = {
   getBookingInfo: function(id) {
     // need to grab all the prices, rating, and numratings
     let query = `SELECT guestMax, pricePerNight, cleaningFee, serviceFee, rating, numRatings FROM listings WHERE listingID = ${id}`;
-    return redis.getAsync(`resLId${id}`)
-      .then(results => {
-        if (results === null) {
+    // return redis.getAsync(`resLId${id}`)
+    //   .then(results => {
+    //     if (results === null) {
           return db.query(query)
           .then(result => {
             result = result.rows;
@@ -19,10 +19,10 @@ module.exports = {
             redis.setAsync(`resLId${id}`, JSON.stringify(result));
             return result;
           })
-        } else {
-          return JSON.parse(results);
-        }
-      })
+      //   } else {
+      //     return JSON.parse(results);
+      //   }
+      // })
       .catch(err => {
         return err;
       })
