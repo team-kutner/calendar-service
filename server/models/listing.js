@@ -18,6 +18,7 @@ module.exports = {
             return dates;
           })
         } else {
+          console.log(results);
           return JSON.parse(results);
         }
       })

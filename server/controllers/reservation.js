@@ -6,8 +6,6 @@ module.exports = {
     let id = req.params.id;
     return models.reservation.getBookingInfo(id)
       .then(result => {
-        result[0].cleaningfee = +result[0].cleaningfee
-        result[0].servicefee = +result[0].servicefee
         res.json(result);
         res.end();
       })
