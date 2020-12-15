@@ -13,7 +13,6 @@ module.exports = {
           return db.query(query)
           .then(result => {
             result = result.rows;
-            console.log(result);
             result[0].cleaningfee = +result[0].cleaningfee
             result[0].servicefee = +result[0].servicefee
             redis.setAsync(`resLId${id}`, JSON.stringify(result));
