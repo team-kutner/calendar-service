@@ -7,8 +7,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
-  watch: true,
-  mode: 'development',
+  mode: 'production',
   plugins: [
     new webpack.optimize.AggressiveMergingPlugin()//Merge chunks
   ],
@@ -34,20 +33,3 @@ module.exports = {
 };
 
 
-
-
-  // [
-  //   {
-  //     test: /\.(png|js|jsx|css)$/,
-  //     exclude: /node_modules/,
-  //     use: {
-  //       loader: 'babel-loader',
-  //       options: {
-  //         presets: ['@babel/preset-env', '@babel/preset-react'],
-  //         plugins: [
-  //           '@babel/plugin-proposal-class-properties'
-  //         ]
-  //       }
-  //     }
-  //   }
-  // ]

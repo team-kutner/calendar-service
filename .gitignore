@@ -12,6 +12,7 @@
 # Newrelic testing
 newrelic.js
 stress_test.yaml
+*.txt
 
 ## NPM ##
 npm

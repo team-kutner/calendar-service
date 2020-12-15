@@ -1,8 +1,13 @@
 const redis = require('redis');
 const { promisifyAll } = require('bluebird');
+const result = require('dotenv').config();
+
+
+if (result.error) {
+  console.log(error);
+}
 
 promisifyAll(redis);
-
 
 const client = redis.createClient({
   host: process.env.REDISHOST,
