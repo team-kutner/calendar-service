@@ -59,6 +59,9 @@ npm install nodemon
 ### Database:
 This service uses postgresql.
 
+## Caching:
+This service uses redis for caching recently retrieved data. In production this retrieval is done by the proxy server to reduce network requests. As such get requests to redis have been commented out in the reservations and listings models. In order to run the service on it's own, with caching uncomment these lines out in the model. Otherwise, it will be assumed that all get requests to the cache will be handled on the proxy.
+
 #### Instructions:
 Seeding DB: First install postgres and create a table called booking. Then run the postgres_schema_nofk.sql file to create two tables. Seed tables using csv scripts below and copy command in psql shell.
 
@@ -74,16 +77,17 @@ This service uses node express.
 Default server port is 3000. To modify add PORT to .env file.
 
 ### Scripts:
-npm start:dev: Runs the server with nodemon\n
-npm run dev: Builds webpack in developer mode with watch tag\n
-npm run build: Builds webpack\n
-npm run seed:mysql Creates mysql database and tables (if they don't exist) and also seeds the databse with mock data with 100 entries\n
-npm test: Runs jest tests\n
-npm test:watch: Runs jest tests with watch tag\n
-npm run create-tables:pg: Creates two postgres tables (listings, reservations)\n
-npm run csv:pgl: Creates a csv file with 10 million records that can be \nadded to pg listings table
-npm run csv:pgr: creates a csv file with 10 million records that can be\n added to pg reservations table
-npm run env: creates a .env file to define process.env variables for set up to pg server\n
+npm start:dev: Runs the server with nodemon
+npm run dev: Builds webpack in developer mode with watch tag
+npm run build: Builds webpack using development mode
+npm run seed:mysql Creates mysql database and tables (if they don't exist) and also seeds the databse with mock data with 100 entries
+npm test: Runs jest tests
+npm test:watch: Runs jest tests with watch tag
+npm run create-tables:pg: Creates two postgres tables (listings, reservations)
+npm run csv:pgl: Creates a csv file with 10 million records that can be     added to pg listings table
+npm run csv:pgr: creates a csv file with 10 million records that can be     added to pg reservations table
+npm run env: creates a .env file to define process.env variables for set up to pg server
+npm run build:prod: Build webpack using production mode
 
 ### Dependencies:
 babel

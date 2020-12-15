@@ -10,6 +10,7 @@
     "start:dev": "nodemon ./server/server.js",
     "dev": "webpack -d --watch",
     "build": "webpack",
+    "build:prod": "webpack --config webpack.config.prod.js",
     "seed:mysql": "mysql -u root -p < schema.sql && node ./server/database/seeding/seed.js",
     "create-tables:pg": "sudo -i -u postgres psql SOURCE ./postgres_schema_nofk.sql",
     "csv:pgl": "node ./server/database/seeding/pgListingsToCSV.js",
