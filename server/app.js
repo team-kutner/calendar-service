@@ -19,8 +19,8 @@ app.get('/listing/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/loaderio-', (req, res) => {
-  res.send('');
-})
+// app.get('/loaderio-', (req, res) => {
+//   res.send('');
+// })
 
 module.exports = app;
