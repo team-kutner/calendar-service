@@ -7,9 +7,9 @@ module.exports = {
   getDates: function(id) {
     // query the database to grab the dates and availability status
     let query = `SELECT checkIn, checkOut FROM reservations WHERE listingID = ${id}`
-    // return redis.getAsync(`listLId${id}`)
-    //   .then(results => {
-    //     if (results === null) {
+    return redis.getAsync(`listLId${id}`)
+      .then(results => {
+        if (results === null) {
         return db.query(query)
           .then(result => {
             var reservations = result.rows;
@@ -17,11 +17,11 @@ module.exports = {
             redis.setAsync(`listLId${id}`, JSON.stringify(dates));
             return dates;
           })
-        // } else {
-        //   console.log(results);
-        //   return JSON.parse(results);
-        // }
-      // })
+        } else {
+          console.log(results);
+          return JSON.parse(results);
+        }
+      })
       .catch(err => {
         console.log(err);
         return err;
