@@ -18,7 +18,10 @@
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "env": "touch .env",
-    "stress-test": "artillery run ./stress_test.yaml"
+    "stress-test": "artillery run ./stress_test.yaml",
+    "start:pm2": "pm2 start ./server/server.js --name service",
+    "stop:pm2": "pm2 stop service",
+    "restart:pm2": "pm2 restart service"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
